@@ -257,31 +257,39 @@ public:
 		int primB=B.Primero();
 		int finA = A.Fin_Lista();
 		int finB = B.Fin_Lista();
-		Nodo<Monomio> aux;
+		Nodo<Monomio> aux,x;
 		Monomio var;
-		while (primA != finA)
+		while (primA != -1)
 		{
-			while (primB != finB) 
+			aux = A.TLista(primA);
+			while (primB != B.Fin_Lista())
 			{
-				if (A.TLista(primA).Elemento().Exponente() == B.TLista(primB).Elemento().Exponente())
+				if (aux.Elemento().Exponente() == B.TLista(primB).Elemento().Exponente())
 				{
-					var.Exponente(A.TLista(primA).Elemento().Exponente());
-					var.Coeficiente(A.TLista(primA).Elemento().Coeficiente() + B.TLista(primB).Elemento().Coeficiente());
-					aux.Elemento(var);
-					B.TLista(primB, aux);
-					
+					var.Coeficiente(aux.Elemento().Coeficiente() + B.TLista(primB).Elemento().Coeficiente());
+					var.Exponente(aux.Elemento().Exponente());
+					x.Elemento(var);
+					B.TLista(primB, x); break;
 				}
-			/*	else if (A.TLista(primA).Elemento().Exponente() != B.TLista(primB).Elemento().Exponente()&& A.TLista(primA).Elemento().Exponente() <B.TLista(B.Proximo(primB)).Elemento().Exponente())
+				else if (aux.Elemento().Exponente() >B.TLista(primB).Elemento().Exponente())
 				{
-					aux = (A.TLista(primA));
-					B.Insertar(aux, primB);
-				}*/
+					if (primB == B.Primero())
+					{
+						B.Insertar(aux, -1); break;
+					}
+					else
+					{
+						B.Insertar(aux, B.Anterior(primB)); break;
+					}
+					break;
+				}
+				
 				primB = B.Proximo(primB);
-				finB = B.Fin_Lista();
 			}
+	
 			primB = B.Primero();
+			finB = B.Fin_Lista();
 			primA = A.Proximo(primA);
-
 		}
 	}
 	Nodo<Persona> LaCosaDeManolo(Nodo<Persona> x,int &pos)// por editar
