@@ -18,6 +18,7 @@ namespace Listas_Forms {
 	Aplicacion<string> APPS,APPS2;
 	INTERFAZ<string>  IOS;
 	Aplicacion<Persona> x;
+	int y;
 	struct ar { int nomnre;double edad; string a; };
 	/// <summary>
 	/// Summary for MyForm
@@ -508,7 +509,7 @@ namespace Listas_Forms {
 			this->MortoNum->Name = L"MortoNum";
 			this->MortoNum->Size = System::Drawing::Size(75, 20);
 			this->MortoNum->TabIndex = 39;
-			this->MortoNum->Text = L"0";
+			this->MortoNum->Text = L"-1";
 			// 
 			// button4
 			// 
@@ -518,6 +519,7 @@ namespace Listas_Forms {
 			this->button4->TabIndex = 40;
 			this->button4->Text = L"button4";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// MyForm
 			// 
@@ -693,18 +695,27 @@ private: System::Void BmostrarB_Click(System::Object^  sender, System::EventArgs
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	Nodo<Persona>aux;
-	IOS.Grid_Memoria_Str(GridP, TtamanoP);//terminar
-	int i = -1;
+	IOS.Grid_Memoria_Str(GridP, TtamanoP);//terminar 
 	x.Memoria_Personas(IOS.ThisM());
-	aux = x.LaCosaDeManolo(aux,i);
+	aux = x.LaCosaDeManolo(Convert::ToInt32(MortoNum->Text),y);
 	MortoName->Text = marshal_as<System::String^>(aux.Elemento().Nombre());
 	MortoNum->Text= Convert::ToString((aux.Elemento().Numero()));
 	IOS.ThisM(x.Persona_Memoria(x.ThisL()));
 	IOS.Memoria_Str_Grid(GridP2);
+	y = aux.Apuntador();
+
 }
 private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs^  e) 
 {
 	IOS.Tam_Grid(GridP,TtamanoP);
+}
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	IOS.ThisM(x.Persona_Memoria(x.ThisL()));
+	IOS.Memoria_Str_Grid(GridP);
+	TtamanoP->Text = Convert::ToString(IOS.Tamano());
+	IOS.Clear(GridP2);
+
 }
 };
 }

@@ -132,7 +132,7 @@ template<class tipo>bool Lista<tipo>::Extraer(Nodo<tipo>&x, int p)
 		if (p == -1)//eliminar el primero de la lista 
 		{
 			x = _lista[_list];//devuelve el primer elemento
-			x.Apuntador(-1);//quita la basura que hay en x
+			
 			p = _list;
 			_list = _lista[_list].Apuntador();//toma el valor del apuntador del valor que sale
 			EliminarNodo(p);
@@ -148,7 +148,7 @@ template<class tipo>bool Lista<tipo>::Extraer(Nodo<tipo>&x, int p)
 			else
 			{
 				x = _lista[_lista[p].Apuntador()];
-				x.Apuntador(-1);
+	
 				y = _lista[p].Apuntador();
 				_lista[p].Apuntador(_lista[_lista[p].Apuntador()].Apuntador());//hace que el anterior tome el apuntador delsiguiente
 																			   //hasta aqui aun no elimina el nodo solo lo quita del orden d ela lista

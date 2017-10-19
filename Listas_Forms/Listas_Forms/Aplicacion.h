@@ -292,39 +292,41 @@ public:
 			primA = A.Proximo(primA);
 		}
 	}
-	Nodo<Persona> LaCosaDeManolo(Nodo<Persona> x,int &pos)// por editar
+	Nodo<Persona> LaCosaDeManolo(int pos,int varus)// por editar
 	{
-
 		int pasos;
 		int p;
 		Nodo<Persona> aux;
 		if (pos == -1)
 		{
+			pasos = this->TLista(this->Primero()).Elemento().Numero()-1;
 			p = this->Primero();
-			pasos = this->TLista(p).Elemento().Numero();
 		}
-		else 
-		{ p = pos; 
-		pasos=x.Elemento().Numero();
+		else
+		{
+			pasos= pos-1;
+			p = varus;
 		}
-		
-		int Fin = this->Fin_Lista();
 		while (pasos--)
 		{
-
 			if (p == this->Ultimo())
 			{
 				p = this->Primero();
 			}
-			else 
+			else
 			{
 				p = this->Proximo(p);
 			}
-
 		}
-		pos = p;
 		this->Extraer(aux, this->Anterior(p));
+		if (p == this->Ultimo())
+		{
+			p = this->Primero();
+		}
+		aux.Apuntador(p);
 		return aux;
+
+
 	}
 	void Memoria_Personas(Memoria<string> x)
 	{
