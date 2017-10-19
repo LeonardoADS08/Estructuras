@@ -146,68 +146,36 @@ public:
 	void IngresarOrdenadamente(Nodo<tipo> x)
 	{
 
-		this->Insertar(x, -1);
-		Ordenar();//solucion temporal
+		int p = this->Primero();
+		int f = this->Fin_Lista();
+		if (this->ListaVacia())
+		{
+			this->Insertar(x, -1);
 
-				  //	Nodo<tipo> aux,aux2;
-				  //	int uno, dos, tres;
-				  //	if (this->ListaVacia())
-				  //	{
-				  //		this->Insertar(x, -1);
-				  //	}
-				  //	else if(this->Localizar_Puntero(this->Primero()).Elemento()<x.Elemento())
-				  //	{
-				  //		this->Extraer(aux,-1);
-				  //		this->Insertar(x, -1);
-				  //		this->Insertar(aux, -1);
-				  //	}
-				  //	else if (this->Localizar_Puntero(this->Primero()).Elemento()>x.Elemento())
-				  //	{
-				  //		
-				  //		this->Insertar(x, -1);
-				  //		
-				  //	}
-				  //	else if (this->Localizar_Puntero(this->Proximo(this->Primero())).Elemento() < x.Elemento())
-				  //	{
-				  //		this->Extraer(aux, -1);
-				  //		this->Extraer(aux2, -1);
-				  //		this->Insertar(x, -1);
-				  //		this->Insertar(aux2, -1);
-				  //		this->Insertar(aux, -1);
-				  //	}
-				  //	else if (this->Localizar_Puntero(this->Proximo(this->Primero())).Elemento() > x.Elemento())
-				  //	{
-				  //		this->Extraer(aux, -1);
-				  //		this->Insertar(x, -1);
-				  //		this->Insertar(aux, -1);
-				  //	}
-				  //	else
-				  //	{
-				  //		uno = this->Fin_Lista();
-				  //		tres = this->Proximo(this->Proximo(this->Primero()));
-				  //		while (tres != uno)
-				  //		{
-				  //			if (this->Localizar_Puntero(tres).Elemento() < x.Elemento())
-				  //			{
-				  //				this->Insertar(x, this->Anterior(tres));break;
-				  //			}
-				  //			tres = this->Proximo(tres);
-				  //		
-				  //		}
-				  //		if (tres == -1)
-				  //		{
-				  //			this->Insertar(x, this->Anterior(this->Ultimo()));
-				  //		}
+		}
+		else
+		{
+			while (p != f)
+			{
+				if (this->TLista(p).Elemento() > x.Elemento())
+				{
 
-				  //	
-				  //	/*	if (this->Localizar_Puntero(tres).Elemento() < x.Elemento()&&tres==uno)
-				  //		{
-				  //			this->Extraer(aux, -1);
-				  //			this->Insertar(x, -1);
-				  //			this->Insertar(aux, -1);
-				  //		}
-				  //*/
-				  //	
+					if (p == this->Primero())
+					{
+						this->Insertar(x, -1); break;
+					}
+
+					else { this->Insertar(x, this->Anterior(p)); break; }
+
+				}
+				else if (p == this->Ultimo())
+				{
+					this->Insertar(x, p); break;
+				}
+				p = this->Proximo(p);
+			}
+
+		}
 	}
 	void ClearList()
 	{

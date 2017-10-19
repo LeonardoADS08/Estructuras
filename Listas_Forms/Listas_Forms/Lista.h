@@ -113,11 +113,9 @@ template<class tipo>bool Lista<tipo>::Insertar(Nodo<tipo> x, int p)
 		}
 		else//pone al final(creo que debe recibir el valor vecotiral del elemento que apunta a la posicion a la que se desea insertar)
 		{
-			x.Apuntador(_lista[_lista[p].Apuntador()].Apuntador());//le otorga al nuevo elemento el apuntador del que se desea poner
-																   //x.Apuntador(p);//no
-			_lista[y] = x;//bien copia el auxiliar en la posicion disponible siguiente
-			_lista[_lista[p].Apuntador()].Apuntador(y);//le da al viejo como apuntador la posicion del nuevo
-													   //_lista[p].Apuntador(_disp);//no
+			x.Apuntador(_lista[p].Apuntador());
+			_lista[y] = x;
+			_lista[p].Apuntador(y);
 		}
 		return true;
 	}
