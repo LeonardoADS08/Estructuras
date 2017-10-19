@@ -2,6 +2,7 @@
 #include "Aplicacion.h"
 #include "INTERFAZ.h"
 #include "string"
+#include <Windows.h>
 using namespace std;
 namespace Listas_Forms {
 
