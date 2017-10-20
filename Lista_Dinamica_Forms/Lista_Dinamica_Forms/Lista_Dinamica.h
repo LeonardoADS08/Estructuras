@@ -120,6 +120,17 @@ public:
 	{
 		return x->Elemento();
 	}
+	Nodo<tipo>*Localizar_Elemento(Nodo<tipo> x)
+	{
+		Nodo<tipo>*i, *j;
+		i = this->Primero();
+		j=this->Fin_Lista()
+			while (i != j)
+			{
+				i = this->Proximo(i);
+			}
+
+	}
 
 };
 
