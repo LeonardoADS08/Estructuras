@@ -124,12 +124,19 @@ public:
 	{
 		Nodo<tipo>*i, *j;
 		i = this->Primero();
-		j=this->Fin_Lista()
-			while (i != j)
+		j = this->Fin_Lista();
+			while (i != j&&(i->Elemento()!=x.Elemento()))//non esta usando x (ERROR)
 			{
 				i = this->Proximo(i);
 			}
-
+			if (i->Elemento() == x.Elemento()) { return i; }
+			else { return NULL; }
+	}
+	Nodo<tipo>Localizar_Elemento_Anterior(Nodo<tipo> x)
+	{
+		Nodo<tipo>*p,y;
+		p=this->Localizar_Elemento(y);
+		return this->Anterior(p);
 	}
 
 };
