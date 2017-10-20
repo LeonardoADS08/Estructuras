@@ -13,6 +13,4 @@ public:
 	tipo Elemento() { return elemento; }
 	void Elemento(tipo x) { elemento = x; }
 	void Apuntador(Nodo<tipo> *r) { apuntador = r; }//indirectamente el espacio de memoria es tipo nodo copia los apuntadores
-	
-
 };

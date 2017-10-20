@@ -70,5 +70,56 @@ public:
 		}
 		return true;
 	}
+
+	//auxiliares
+
+	Nodo<tipo>*Primero()//devuelve el apuntador en elque se situa el primero de la lista
+	{
+		return _list;
+	}
+	Nodo<tipo>*Proximo(Nodo<tipo>*p)//devuelte el puntero siguiente al que se recibe
+	{
+		return p->Apuntador();
+	}
+	Nodo<tipo>*Fin_Lista()
+	{
+		Nodo<tipo>*y;
+		y = this->Primero();
+		while (y != NULL)
+		{
+			y = this->Proximo(y);
+		}
+		return y;//Siesta bien deberia devolver NULL
+	}
+	Nodo<tipo>*Ultimo()
+	{
+		Nodo<tipo>*y,*f;
+			y = this->Primero();
+			f = this->Fin_Lista();//deberia ser NULL
+		while (y->Apuntador() != f)//se fija en el ultimo si su apuntador es NULL
+		{
+			
+			y = this->Proximo(y);
+		}
+		return y;
+	}
+	Nodo<tipo>*Anterior(Nodo<tipo>*x)
+	{
+		Nodo<tipo>*P,*U;
+	
+		P = this->Primero();
+		while (P!= x)
+		{
+			U = P;
+			P = this->Proximo(P);
+
+		}
+		return U;
+	}
+	tipo Localizar_Puntero(Nodo<tipo>*x)
+	{
+		return x->Elemento();
+	}
+
 };
 
