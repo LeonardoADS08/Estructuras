@@ -111,7 +111,7 @@ template<class tipo>bool Lista<tipo>::Insertar(Nodo<tipo> x, int p)
 			_lista[y] = x;
 			_list = y;
 		}
-		else//pone al final(creo que debe recibir el valor vecotiral del elemento que apunta a la posicion a la que se desea insertar)
+		else//recibe la pos vectorail del elemento al cual le quieres poner enfrente de el
 		{
 			x.Apuntador(_lista[p].Apuntador());
 			_lista[y] = x;

@@ -11,19 +11,20 @@ public:
 	{
 		return new Nodo<tipo>;
 	}
-	bool Insertar(Nodo<tipo>*x)
+	bool Insertar(Nodo<tipo>*x,Nodo<tipo> valor)
 	{
 		Nodo<tipo>*y;
 		y = Buscar_Nodo();
 		y->Apuntador(NULL);
-		y->Elemento(x->Elemento());
+		y->Elemento(valor.Elemento());
 		if (x == NULL)
 		{
+			y->Apuntador(_list);
 			_list = y;
 		}
 		else
 		{
-
+			x->Apuntador(y);
 		}
 		return true;
 	}
