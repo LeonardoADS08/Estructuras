@@ -695,8 +695,12 @@ private: System::Void BmostrarB_Click(System::Object^  sender, System::EventArgs
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	Nodo<Persona>aux;
-	IOS.Grid_Memoria_Str(GridP, TtamanoP);//terminar 
-	x.Memoria_Personas(IOS.ThisM());
+	int h = Convert::ToInt32(MortoNum->Text);
+	if (h==-1) {
+		IOS.Grid_Memoria_Str(GridP, TtamanoP);//terminar
+
+		x.Memoria_Personas(IOS.ThisM());
+	}
 	aux = x.LaCosaDeManolo(Convert::ToInt32(MortoNum->Text),y);
 	MortoName->Text = marshal_as<System::String^>(aux.Elemento().Nombre());
 	MortoNum->Text= Convert::ToString((aux.Elemento().Numero()));
@@ -711,6 +715,7 @@ private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs
 }
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
 {
+
 	IOS.ThisM(x.Persona_Memoria(x.ThisL()));
 	IOS.Memoria_Str_Grid(GridP);
 	TtamanoP->Text = Convert::ToString(IOS.Tamano());

@@ -299,7 +299,7 @@ public:
 		Nodo<Persona> aux;
 		if (pos == -1)
 		{
-			pasos = this->TLista(this->Primero()).Elemento().Numero()-1;
+			pasos = this->TLista(this->Primero()).Elemento().Numero();
 			p = this->Primero();
 		}
 		else
@@ -318,10 +318,26 @@ public:
 				p = this->Proximo(p);
 			}
 		}
-		this->Extraer(aux, this->Anterior(p));
+
+
+		if (p == this->Primero())
+		{
+			this->Extraer(aux,-1);
+
+		}
+		else
+		{
+			this->Extraer(aux, this->Anterior(p));
+
+		}
+
 		if (p == this->Ultimo())
 		{
 			p = this->Primero();
+		}
+		else
+		{
+			p = this->Proximo(p);
 		}
 		aux.Apuntador(p);
 		return aux;
