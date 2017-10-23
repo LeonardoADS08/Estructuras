@@ -11,6 +11,8 @@ namespace Lista_Dinamica_Forms {
 	using namespace System::Drawing;
 	Aplicacion<int> APP;
 	INTERFAZ<int> IO,IO2;
+	Aplicacion<string>APPS,APPS2;
+	INTERFAZ<string>IOS,IOS2;
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
@@ -55,6 +57,9 @@ namespace Lista_Dinamica_Forms {
 	private: System::Windows::Forms::DataGridView^  GridL3;
 	private: System::Windows::Forms::Button^  BeliminarRep;
 	private: System::Windows::Forms::TextBox^  Tcopias;
+	private: System::Windows::Forms::Button^  Binsertar_mr;
+	private: System::Windows::Forms::Button^  Mostar_mr;
+	private: System::Windows::Forms::Button^  button1;
 
 	private:
 		/// <summary>
@@ -81,6 +86,9 @@ namespace Lista_Dinamica_Forms {
 			this->GridL3 = (gcnew System::Windows::Forms::DataGridView());
 			this->BeliminarRep = (gcnew System::Windows::Forms::Button());
 			this->Tcopias = (gcnew System::Windows::Forms::TextBox());
+			this->Binsertar_mr = (gcnew System::Windows::Forms::Button());
+			this->Mostar_mr = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL3))->BeginInit();
@@ -196,11 +204,44 @@ namespace Lista_Dinamica_Forms {
 			this->Tcopias->TabIndex = 11;
 			this->Tcopias->Text = L"0";
 			// 
+			// Binsertar_mr
+			// 
+			this->Binsertar_mr->Location = System::Drawing::Point(145, 25);
+			this->Binsertar_mr->Name = L"Binsertar_mr";
+			this->Binsertar_mr->Size = System::Drawing::Size(109, 23);
+			this->Binsertar_mr->TabIndex = 12;
+			this->Binsertar_mr->Text = L"InsertarMemoria_str";
+			this->Binsertar_mr->UseVisualStyleBackColor = true;
+			this->Binsertar_mr->Click += gcnew System::EventHandler(this, &MyForm::Binsertar_mr_Click);
+			// 
+			// Mostar_mr
+			// 
+			this->Mostar_mr->Location = System::Drawing::Point(260, 26);
+			this->Mostar_mr->Name = L"Mostar_mr";
+			this->Mostar_mr->Size = System::Drawing::Size(109, 23);
+			this->Mostar_mr->TabIndex = 13;
+			this->Mostar_mr->Text = L"Lista String";
+			this->Mostar_mr->UseVisualStyleBackColor = true;
+			this->Mostar_mr->Click += gcnew System::EventHandler(this, &MyForm::Mostar_mr_Click);
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(375, 26);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(109, 23);
+			this->button1->TabIndex = 14;
+			this->button1->Text = L"EliminarSn";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(752, 262);
+			this->ClientSize = System::Drawing::Size(752, 367);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Mostar_mr);
+			this->Controls->Add(this->Binsertar_mr);
 			this->Controls->Add(this->Tcopias);
 			this->Controls->Add(this->BeliminarRep);
 			this->Controls->Add(this->GridL3);
@@ -269,5 +310,26 @@ private: System::Void BeliminarRep_Click(System::Object^  sender, System::EventA
 	IO2.Memoria_Grilla(GridL3);
 }
 
+private: System::Void Binsertar_mr_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	IOS.Grid_Memoria_Str(GridL1,Tentrada1);
+
+}
+private: System::Void Mostar_mr_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APPS.Memoria_ListaDim(IOS.ThisM());
+	IOS2.ThisM(APPS.ListaDim_Memoria(APPS.ThisL()));
+	IOS2.Memoria_Str_Grid(GridL2);
+}
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+
+	APPS2.ThisL(APPS.EliminarSn());
+
+	IOS.ThisM(APPS.ListaDim_Memoria(APPS.ThisL()));
+	IOS.Memoria_Str_Grid(GridL2);
+	IOS2.ThisM(APPS2.ListaDim_Memoria(APPS2.ThisL()));
+	IOS2.Memoria_Str_Grid(GridL3);
+}
 };
 }

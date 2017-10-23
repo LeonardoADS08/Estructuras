@@ -39,7 +39,7 @@ public:
 	bool ValidoParaSn(string aux)
 	{
 		int i = 0;
-		if(aux[aux.length()-1]=='S'||, aux[aux.length() - 1] == 's' || , aux[aux.length() - 1] == 'N' || , aux[aux.length() - 1] == 'n' || )
+		if(aux[aux.length()-1]=='S'|| aux[aux.length() - 1] == 's' ||  aux[aux.length() - 1] == 'N' ||  aux[aux.length() - 1] == 'n' )
 		{
 			return true;
 		}
@@ -138,6 +138,34 @@ public:
 			copias = 0;
 			q = this->Proximo(q);
 		}
+	}
+
+	Lista_Dinamica<tipo> EliminarSn()
+	{
+		Nodo<tipo> var;
+		Lista_Dinamica<tipo> aux;
+		Nodo<tipo>*p, *q, *r;
+		p = this->Primero();
+		while (p != this->Fin_Lista())
+		{
+			if (ValidoParaSn(this->Lista(p)))
+			{
+				if (p == this->Primero())
+				{
+					this->Eliminar(nullptr, var);
+					
+				}
+				else
+				{
+					r = this->Anterior(p);
+					this->Eliminar(r, var);
+					p = r;
+				}
+				aux.Insertar(nullptr, var); 
+			}
+			p = this->Proximo(p);
+		}
+		return aux;
 	}
 	
 };
