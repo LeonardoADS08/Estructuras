@@ -22,13 +22,16 @@ public:
 	Memoria<tipo> ListaDim_Memoria(Lista_Dinamica<tipo> x)
 	{
 		Memoria<tipo> aux;
-		Nodo<tipo> var;
+		Nodo<tipo> var,*p;
 		int i = 0;
-		while (!x.ListaVacia())
+		p = this->Primero();
+		while (p!=this->Fin_Lista())
 		{
-			i++;
-			x.Eliminar(NULL, var);
+			
+			var.Elemento(x.Lista(p));
+			p = this->Proximo(p);
 			aux.Arreglo(var, i);
+			i++;
 		}
 		aux.Tamano(i);
 		return aux;
