@@ -49,6 +49,12 @@ namespace Lista_Dinamica_Forms {
 
 
 	private: System::Windows::Forms::Button^  Btam;
+	private: System::Windows::Forms::Button^  Binvertir;
+	private: System::Windows::Forms::Button^  Bordenar;
+	private: System::Windows::Forms::Button^  BingOrdenado;
+	private: System::Windows::Forms::DataGridView^  GridL3;
+	private: System::Windows::Forms::Button^  BeliminarRep;
+	private: System::Windows::Forms::TextBox^  Tcopias;
 
 	private:
 		/// <summary>
@@ -69,8 +75,15 @@ namespace Lista_Dinamica_Forms {
 			this->GridL1 = (gcnew System::Windows::Forms::DataGridView());
 			this->GridL2 = (gcnew System::Windows::Forms::DataGridView());
 			this->Btam = (gcnew System::Windows::Forms::Button());
+			this->Binvertir = (gcnew System::Windows::Forms::Button());
+			this->Bordenar = (gcnew System::Windows::Forms::Button());
+			this->BingOrdenado = (gcnew System::Windows::Forms::Button());
+			this->GridL3 = (gcnew System::Windows::Forms::DataGridView());
+			this->BeliminarRep = (gcnew System::Windows::Forms::Button());
+			this->Tcopias = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Bmemoria
@@ -104,7 +117,7 @@ namespace Lista_Dinamica_Forms {
 			// GridL1
 			// 
 			this->GridL1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->GridL1->Location = System::Drawing::Point(145, 57);
+			this->GridL1->Location = System::Drawing::Point(145, 54);
 			this->GridL1->Name = L"GridL1";
 			this->GridL1->Size = System::Drawing::Size(519, 49);
 			this->GridL1->TabIndex = 3;
@@ -112,7 +125,7 @@ namespace Lista_Dinamica_Forms {
 			// GridL2
 			// 
 			this->GridL2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->GridL2->Location = System::Drawing::Point(145, 112);
+			this->GridL2->Location = System::Drawing::Point(145, 109);
 			this->GridL2->Name = L"GridL2";
 			this->GridL2->Size = System::Drawing::Size(519, 49);
 			this->GridL2->TabIndex = 4;
@@ -127,11 +140,73 @@ namespace Lista_Dinamica_Forms {
 			this->Btam->UseVisualStyleBackColor = true;
 			this->Btam->Click += gcnew System::EventHandler(this, &MyForm::Btam_Click);
 			// 
+			// Binvertir
+			// 
+			this->Binvertir->Location = System::Drawing::Point(30, 113);
+			this->Binvertir->Name = L"Binvertir";
+			this->Binvertir->Size = System::Drawing::Size(109, 23);
+			this->Binvertir->TabIndex = 6;
+			this->Binvertir->Text = L"Invertir";
+			this->Binvertir->UseVisualStyleBackColor = true;
+			this->Binvertir->Click += gcnew System::EventHandler(this, &MyForm::Binvertir_Click);
+			// 
+			// Bordenar
+			// 
+			this->Bordenar->Location = System::Drawing::Point(30, 138);
+			this->Bordenar->Name = L"Bordenar";
+			this->Bordenar->Size = System::Drawing::Size(109, 23);
+			this->Bordenar->TabIndex = 7;
+			this->Bordenar->Text = L"Ordenar";
+			this->Bordenar->UseVisualStyleBackColor = true;
+			this->Bordenar->Click += gcnew System::EventHandler(this, &MyForm::Bordenar_Click);
+			// 
+			// BingOrdenado
+			// 
+			this->BingOrdenado->Location = System::Drawing::Point(30, 167);
+			this->BingOrdenado->Name = L"BingOrdenado";
+			this->BingOrdenado->Size = System::Drawing::Size(109, 23);
+			this->BingOrdenado->TabIndex = 8;
+			this->BingOrdenado->Text = L"Ingreso Ordenado";
+			this->BingOrdenado->UseVisualStyleBackColor = true;
+			this->BingOrdenado->Click += gcnew System::EventHandler(this, &MyForm::BingOrdenado_Click);
+			// 
+			// GridL3
+			// 
+			this->GridL3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->GridL3->Location = System::Drawing::Point(145, 164);
+			this->GridL3->Name = L"GridL3";
+			this->GridL3->Size = System::Drawing::Size(519, 49);
+			this->GridL3->TabIndex = 9;
+			// 
+			// BeliminarRep
+			// 
+			this->BeliminarRep->Location = System::Drawing::Point(30, 196);
+			this->BeliminarRep->Name = L"BeliminarRep";
+			this->BeliminarRep->Size = System::Drawing::Size(75, 23);
+			this->BeliminarRep->TabIndex = 10;
+			this->BeliminarRep->Text = L"El.Rept";
+			this->BeliminarRep->UseVisualStyleBackColor = true;
+			this->BeliminarRep->Click += gcnew System::EventHandler(this, &MyForm::BeliminarRep_Click);
+			// 
+			// Tcopias
+			// 
+			this->Tcopias->Location = System::Drawing::Point(111, 199);
+			this->Tcopias->Name = L"Tcopias";
+			this->Tcopias->Size = System::Drawing::Size(28, 20);
+			this->Tcopias->TabIndex = 11;
+			this->Tcopias->Text = L"0";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(752, 262);
+			this->Controls->Add(this->Tcopias);
+			this->Controls->Add(this->BeliminarRep);
+			this->Controls->Add(this->GridL3);
+			this->Controls->Add(this->BingOrdenado);
+			this->Controls->Add(this->Bordenar);
+			this->Controls->Add(this->Binvertir);
 			this->Controls->Add(this->Btam);
 			this->Controls->Add(this->GridL2);
 			this->Controls->Add(this->GridL1);
@@ -143,6 +218,7 @@ namespace Lista_Dinamica_Forms {
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -166,5 +242,32 @@ private: System::Void Blista_Click(System::Object^  sender, System::EventArgs^  
 	IO2.Memoria_Grilla(GridL2);
 
 }
+private: System::Void Binvertir_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APP.Invertir();
+	IO2.ThisM(APP.ListaDim_Memoria(APP.ThisL()));
+	IO2.Memoria_Grilla(GridL3);
+}
+private: System::Void Bordenar_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APP.Ordenar();
+	IO2.ThisM(APP.ListaDim_Memoria(APP.ThisL()));
+	IO2.Memoria_Grilla(GridL3);
+}
+private: System::Void BingOrdenado_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	Nodo<int> aux;
+	aux.Elemento(Convert::ToInt32(Tentrada1->Text));
+	APP.IngresarOrdenadamente(aux);
+	IO2.ThisM(APP.ListaDim_Memoria(APP.ThisL()));
+	IO2.Memoria_Grilla(GridL3);
+}
+private: System::Void BeliminarRep_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APP.EliminarNrepetidos(Convert::ToInt32(Tcopias->Text));
+	IO2.ThisM(APP.ListaDim_Memoria(APP.ThisL()));
+	IO2.Memoria_Grilla(GridL3);
+}
+
 };
 }

@@ -22,15 +22,16 @@ public:
 	Memoria<tipo> ListaDim_Memoria(Lista_Dinamica<tipo> x)
 	{
 		Memoria<tipo> aux;
-	
-		Nodo<tipo> var,*p=this->Primero();
+		Nodo<tipo> var, *p;
 		int i = 0;
-		while (!x.ListaVacia())
+		p = this->Primero();
+		while (p != this->Fin_Lista())
 		{
-			i++;
-			var.Elemento(this->Lista(p));
+
+			var.Elemento(x.Lista(p));
 			p = this->Proximo(p);
 			aux.Arreglo(var, i);
+			i++;
 		}
 		aux.Tamano(i);
 		return aux;
@@ -105,13 +106,37 @@ public:
 		}
 	}
 	
-	Lista_Dinamica<tipo> EliminarNrepetidos(int cont)
+	void EliminarNrepetidos(int cont)
 	{
-		Nodo<tipo>*p,*q;
+		Nodo<tipo>*p,*q,*aux,f;
 		p = this->Primero();
+		int copias=0;
 		while (p != this->Fin_Lista())
 		{
-			
+			q = this->Primero();
+			while (p != this->Fin_Lista())
+			{
+				if (this->Lista(p) == this->Lista(q))
+				{
+					if(copias<cont)
+					{
+						copias++;
+					}
+					else
+					{
+						aux = this->Anterior(p);
+						this->Eliminar(aux, f);
+						p = aux;
+					
+					}
+					
+
+				}
+				p = this->Proximo(p);
+				
+			}
+			copias = 0;
+			q = this->Proximo(q);
 		}
 	}
 	

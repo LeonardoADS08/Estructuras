@@ -46,10 +46,10 @@ public:
 		if (this->ListaVacia()) { return false; }
 		else
 		{
-			if (x == NULL)//eliminar el primero
+			if (x == nullptr)//eliminar el primero
 			{
 				valor.Elemento(_list->Elemento());//pone el primero en salir
-				valor.Apuntador(NULL);
+				valor.Apuntador(nullptr);
 				y = _list;//y se convierte en el primero en salir
 				_list = _list->Apuntador();//cambia list por el siguiente de list
 				this->Liberar_Nodo(y);//elimina dicho nodo es decir el nodo que esta apuntado Y es decir esa memoria ya no esta
@@ -57,10 +57,10 @@ public:
 			}
 			else 
 			{
-				if (x->Apuntador() != NULL)//se asegura que no reciba el ultimo elemento ya que ese no apunta a nadie
+				if (x->Apuntador() != nullptr)//se asegura que no reciba el ultimo elemento ya que ese no apunta a nadie
 				{
 					valor.Elemento(x->Apuntador()->Elemento());//pone el valor en la direccion a la que apunta x(osea el elmento siguiente)
-					valor.Apuntador(NULL);
+					valor.Apuntador(nullptr);
 					y = x->Apuntador();//el nodo que estoy eliminando osea su direccion;
 					x->Apuntador(y->Apuntador());//guarda el apuntador del nodo que elimine en el anterior a el
 					this->Liberar_Nodo(y);//libera la memoria de y es decir el nodo que quise eliminar
@@ -87,18 +87,18 @@ public:
 	{
 		Nodo<tipo>*y;
 		y = this->Primero();
-		while (y != NULL)
+		while (y != nullptr)
 		{
 			y = this->Proximo(y);
 		}
-		return y;//Siesta bien deberia devolver NULL
+		return y;//Siesta bien deberia devolver nullptr
 	}
 	Nodo<tipo>*Ultimo()
 	{
 		Nodo<tipo>*y,*f;
 			y = this->Primero();
-			f = this->Fin_Lista();//deberia ser NULL
-		while (y->Apuntador() != f)//se fija en el ultimo si su apuntador es NULL
+			f = this->Fin_Lista();//deberia ser nullptr
+		while (y->Apuntador() != f)//se fija en el ultimo si su apuntador es nullptr
 		{
 			
 			y = this->Proximo(y);
@@ -132,7 +132,7 @@ public:
 				i = this->Proximo(i);
 			}
 			if (i->Elemento() == x.Elemento()) { return i; }
-			else { return NULL; }
+			else { return nullptr; }
 	}
 	Nodo<tipo>Localizar_Elemento_Anterior(Nodo<tipo> x)
 	{
