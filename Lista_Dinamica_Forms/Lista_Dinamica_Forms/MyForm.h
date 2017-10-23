@@ -238,7 +238,8 @@ namespace Lista_Dinamica_Forms {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(752, 367);
+			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->ClientSize = System::Drawing::Size(706, 242);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Mostar_mr);
 			this->Controls->Add(this->Binsertar_mr);
@@ -255,6 +256,7 @@ namespace Lista_Dinamica_Forms {
 			this->Controls->Add(this->Blista);
 			this->Controls->Add(this->Bmemoria);
 			this->Name = L"MyForm";
+			this->Opacity = 0.9;
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL1))->EndInit();
