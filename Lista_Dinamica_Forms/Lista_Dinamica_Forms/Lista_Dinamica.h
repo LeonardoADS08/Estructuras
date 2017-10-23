@@ -6,7 +6,7 @@ class Lista_Dinamica
 	// Nodo<tipo> _lista;
 	 Nodo<tipo>*_list;
 
-	 Nodo<tipo> Buscar_Nodo()
+	 Nodo<tipo>*Buscar_Nodo()
 	 {
 		 return new Nodo<tipo>;
 	 }
@@ -20,22 +20,24 @@ public:
 	{
 		Nodo<tipo>*y;
 		y = Buscar_Nodo();
-		y->Apuntador(NULL);
+		y->Apuntador(nullptr);
 		y->Elemento(valor.Elemento());
-		if (x == NULL)
+		if (x == nullptr)
 		{
 			y->Apuntador(_list);
 			_list = y;
 		}
 		else
 		{
+			y->Apuntador(x->Apuntador());
 			x->Apuntador(y);
+			
 		}
 		return true;
 	}
 	bool ListaVacia()
 {
-	if (_list == NULL) { return true; }
+	if (_list == nullptr) { return true; }
 	else { return false; }
 }
 	bool Eliminar(Nodo<tipo>*x, Nodo<tipo>&valor)//x es la direccion de memoria que recibe
@@ -105,7 +107,7 @@ public:
 	}
 	Nodo<tipo>*Anterior(Nodo<tipo>*x)
 	{
-		Nodo<tipo>*P,*U;
+		Nodo<tipo>*P, *U = this->Primero();
 	
 		P = this->Primero();
 		while (P!= x)
@@ -139,5 +141,28 @@ public:
 		return this->Anterior(p);
 	}
 
+	//generales
+
+	void Intercambiar(Nodo<tipo>*p, Nodo<tipo>*q)
+	{
+		Nodo<tipo> prim,sec;
+
+		prim.Elemento(this->Lista(p));
+		sec.Elemento(this->Lista(q));
+
+
+		this->Lista(q, prim);
+		this->Lista(p, sec);
+	}
+	tipo Lista(Nodo<tipo>*p)
+	{
+		return p->Elemento();
+	}
+	void Lista(Nodo<tipo>*pos, Nodo<tipo> val)
+	{
+		pos->Elemento(val.Elemento());
+	}
+	void ThisL(Lista_Dinamica<tipo> x) { *this = x; }
+	Lista_Dinamica<tipo> ThisL() { return *this; }
 };
 

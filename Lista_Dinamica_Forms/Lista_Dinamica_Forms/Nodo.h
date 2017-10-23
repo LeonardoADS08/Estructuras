@@ -1,10 +1,10 @@
 #pragma once
-const int N = 100;
+
 template<class tipo>
 class Nodo
 {
 	tipo elemento;
-	Nodo<tipo> *apuntador;
+	Nodo<tipo>*apuntador;
 public:
 	Nodo(void)
 	{

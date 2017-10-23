@@ -41,6 +41,12 @@
     <ClInclude Include="Nodo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Aplicacion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="INTERFAZ.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

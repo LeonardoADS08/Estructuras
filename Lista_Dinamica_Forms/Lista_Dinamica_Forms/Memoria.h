@@ -1,26 +1,25 @@
 #pragma once
 #include "Nodo.h"
-#include <string>
-using namespace std;
 template<class tipo>
 class Memoria
 {
-	int _tamano;
-	Nodo<tipo> _nodo[N];
+	Nodo<tipo> _arreglo[100];
+	int _tam;
 public:
-	Memoria() { _tamano = 0; }
-	Nodo<tipo> Arreglo(int pos)
-	{
-		return _nodo[pos];
-	}
+	Memoria() { _tam = 0; }
+	~Memoria(){}
+
 	void Arreglo(Nodo<tipo> x, int pos)
 	{
-		_nodo[pos] = x;
+		_arreglo[pos] = x;
 	}
-	int Tamano() { return _tamano; }
-	void Tamano(int a) { _tamano = a; }
+	Nodo<tipo> Arreglo(int pos)
+	{
+		return _arreglo[pos];
+	}
+	int Tamano() { return _tam; }
+	void Tamano(int a) { _tam = a; }
+	void ThisM(Memoria<tipo> x) { *this = x; }
 	Memoria<tipo> ThisM() { return *this; }
-	void ThisM(Memoria<tipo> x){*this=x;}
-	~Memoria(){}
 };
 

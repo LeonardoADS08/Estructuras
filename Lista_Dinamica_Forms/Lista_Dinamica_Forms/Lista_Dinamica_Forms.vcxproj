@@ -144,6 +144,8 @@
     <ClCompile Include="Nodo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aplicacion.h" />
+    <ClInclude Include="INTERFAZ.h" />
     <ClInclude Include="Lista_Dinamica.h" />
     <ClInclude Include="Memoria.h" />
     <ClInclude Include="MyForm.h">
