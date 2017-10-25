@@ -119,8 +119,8 @@ public:
 			return i;
 		}
 	}
-	Nodo<tipo> TLista(int pos) { return _Lista[pos]; }
-	void TLista(Nodo<tipo>x, int pos) { _Lista[pos] = x; }
+	//Nodo<tipo> TLista(int pos) { return _Lista[pos]; }
+	//void TLista(tipo x, int pos) { _Lista[pos].Elemento( x); }//ver claramente mueve sin modificar su puntero
 	int Localizar_Elemento(Nodo<tipo> x)
 	{
 		int i = -1;
@@ -155,6 +155,10 @@ public:
 			return q;
 		}
 	}
-
+	void Swap(int p, int q)
+	{
+		Nodo<tipo> aux1, aux2;
+		
+	}
 	~Lista_Circular(){}
 };
