@@ -12,7 +12,11 @@ class Lista_Circular
 		_disp = _lista[_disp].Apuntador();
 		return y;
 	}
-
+	void EliminarNodo(int y)
+	{
+		_lista[y].Apuntador(_disp);
+		_disp = y;
+	}
 public:
 	Lista_Circular()
 	{
@@ -64,9 +68,93 @@ public:
 			return true;
 		}
 	}
-	
-
+	int Primero(int a)
+	{
+		return _list[a].Apuntador();
+	}
+	bool Eliminar(Nodo<tipo>&x, int p)
+	{
+		int y;
+		if (ListaVacia()) { return false; }
+		else
+		{
+			if (p == -1||p==_list)
+			{
+				y = this->Primero();
+				x = _Lista[y];
+				if (y == _list) { _list = -1; }
+				else
+				{
+					_Lista[_list].Apuntador(_Lista[y].Apuntador());
+				}
+			}
+			else
+			{
+				y = _Lista[p].Apuntador();
+				x = _Lista[y];
+				if (y == _list) { _list = p; }
+				_Lista[p].Apuntador(_Lista[y].Apuntador());
+				
+			}
+			this->EliminarNodo(y);
+			return true;
+		}
+	}
+	int Proximo(int i) { return _lista[i].Apuntador(); }
+	int Ultimo()
+	{
+		return _list;
+	}
+	int Fin_Lista()
+	{
+		int i;
+		if (ListaVacia()) { return -1; }
+		else
+		{
+			i = this->Primero();
+			do
+			{
+				i = this->Proximo(i);
+			} while (i != this->Primero());
+			return i;
+		}
+	}
+	Nodo<tipo> TLista(int pos) { return _Lista[pos]; }
+	void TLista(Nodo<tipo>x, int pos) { _Lista[pos] = x; }
+	int Localizar_Elemento(Nodo<tipo> x)
+	{
+		int i = -1;
+		if (this->ListaVacia()) { return -1; }
+		else
+		{
+			i = this->Primero();
+			do
+			{
+				i = this->Proximo(i);
+			} while (x.Elemento()!=_Lista[i].Elemento()&&i != this->Primero());
+			if (x.Elemento() == _Lista[i].Elemento()) { return i; }
+			else return -1;
+		}
+	}
+	Nodo<tipo> Localizar_Puntero(int pos)
+	{
+		return _Lista[pos];
+	}
+	int Anterior(int pos)
+	{
+		int i = -1,q,w;
+		if (this->ListaVacia()) { return -1; }
+		else
+		{
+			i = this->Primero();
+			do
+			{
+				q = i;
+				i = this->Proximo(i);
+			} while (i != this->Primero() && p != i);
+			return q;
+		}
+	}
 
 	~Lista_Circular(){}
 };
-
