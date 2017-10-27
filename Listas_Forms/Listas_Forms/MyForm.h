@@ -679,7 +679,7 @@ private: System::Void Bmostrar_A_Click(System::Object^  sender, System::EventArg
 private: System::Void BSuma_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	APPM.SumarPolinomio();
-	IO2.ThisM(APPM.Polinomio_Memoria(APPM.This_Polinomio('B')));
+	IO2.ThisM(APPM.Polinomio_Memoria(APPM.This_Polinomio('A')));
 	IO2.Memoria_Grilla(GridC);
 }
 private: System::Void BinsertarB_Click(System::Object^  sender, System::EventArgs^  e) 

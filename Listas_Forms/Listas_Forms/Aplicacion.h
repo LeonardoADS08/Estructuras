@@ -253,44 +253,54 @@ public:
 	void SumarPolinomio()
 	{
 		//el primero en salir deberia ser el mayor;
-		int primA=A.Primero();
-		int primB=B.Primero();
-		int finA = A.Fin_Lista();
-		int finB = B.Fin_Lista();
-		Nodo<Monomio> aux,x;
-		Monomio var;
-		while (primA != -1)
+		int iA = A.Primero(), iB =B.Primero(), FinA = A.Fin_Lista(), FinB = B.Fin_Lista(), antA = -1, antB = -1;
+		Nodo<Monomio> nodoAux;
+		Monomio auxA, auxB;
+		while (iA != FinA || iB != FinB)
 		{
-			aux = A.TLista(primA);
-			while (primB != B.Fin_Lista())
+			auxA = A.TLista(iA).Elemento();
+			auxB = B.TLista(iB).Elemento();
+			if (auxA.Exponente() == auxB.Exponente())
 			{
-				if (aux.Elemento().Exponente() == B.TLista(primB).Elemento().Exponente())
+				auxA.Coeficiente(auxA.Coeficiente() + auxB.Coeficiente());
+				nodoAux.Elemento(auxA);
+				A.TLista(iA, nodoAux);
+
+				// Solo aumenta si no esta en el final
+				if (iA != FinA)
 				{
-					var.Coeficiente(aux.Elemento().Coeficiente() + B.TLista(primB).Elemento().Coeficiente());
-					var.Exponente(aux.Elemento().Exponente());
-					x.Elemento(var);
-					B.TLista(primB, x); break;
+					antA = iA;
+					iA = A.Proximo(iA);
 				}
-				else if (aux.Elemento().Exponente() >B.TLista(primB).Elemento().Exponente())
+				if (iB != FinB)
 				{
-					if (primB == B.Primero())
-					{
-						B.Insertar(aux, -1); break;
-					}
-					else
-					{
-						B.Insertar(aux, B.Anterior(primB)); break;
-					}
-					break;
+					antB = iB;
+					iB = B.Proximo(iB);
 				}
-				
-				primB = B.Proximo(primB);
+
 			}
-	
-			primB = B.Primero();
-			finB = B.Fin_Lista();
-			primA = A.Proximo(primA);
+			else if (auxB.Exponente() > auxA.Exponente())
+			{
+				nodoAux.Elemento(auxB);
+				A.Insertar(nodoAux, antA);
+
+				if (iB != FinB)
+				{
+					antB = iB;
+					iB = B.Proximo(iB);
+				}
+			}
+			else
+			{
+				if (iA != FinA)
+				{
+					antA = iA;
+					iA = A.Proximo(iA);
+				}
+			}
 		}
+		
+		
 	}
 	Nodo<Persona> LaCosaDeManolo(int pos,int varus)// por editar
 	{
