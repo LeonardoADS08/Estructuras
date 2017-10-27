@@ -319,15 +319,15 @@ public:
 	}
 	void RestarPolinomio()
 	{
-		int i = A.Primero();
+		int i = B.Primero();
 		Monomio aux;
 		
-		while (i != A.Fin_Lista())
+		while (i != B.Fin_Lista())
 		{
-			aux = A.TLista(i);
+			aux = B.TLista(i);
 			aux.Coeficiente(aux.Coeficiente()*-1);
-			A.TLista(i, aux);
-			i = A.Proximo(i);
+			B.TLista(i, aux);
+			i = B.Proximo(i);
 
 		}
 		this->SumarPolinomio();
