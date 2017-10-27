@@ -60,6 +60,8 @@ namespace Lista_Dinamica_Forms {
 	private: System::Windows::Forms::Button^  Binsertar_mr;
 	private: System::Windows::Forms::Button^  Mostar_mr;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  BclearMem;
+	private: System::Windows::Forms::Button^  CLRList;
 
 	private:
 		/// <summary>
@@ -89,6 +91,8 @@ namespace Lista_Dinamica_Forms {
 			this->Binsertar_mr = (gcnew System::Windows::Forms::Button());
 			this->Mostar_mr = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->BclearMem = (gcnew System::Windows::Forms::Button());
+			this->CLRList = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->GridL3))->BeginInit();
@@ -206,7 +210,7 @@ namespace Lista_Dinamica_Forms {
 			// 
 			// Binsertar_mr
 			// 
-			this->Binsertar_mr->Location = System::Drawing::Point(145, 25);
+			this->Binsertar_mr->Location = System::Drawing::Point(325, 25);
 			this->Binsertar_mr->Name = L"Binsertar_mr";
 			this->Binsertar_mr->Size = System::Drawing::Size(109, 23);
 			this->Binsertar_mr->TabIndex = 12;
@@ -216,7 +220,7 @@ namespace Lista_Dinamica_Forms {
 			// 
 			// Mostar_mr
 			// 
-			this->Mostar_mr->Location = System::Drawing::Point(260, 26);
+			this->Mostar_mr->Location = System::Drawing::Point(440, 26);
 			this->Mostar_mr->Name = L"Mostar_mr";
 			this->Mostar_mr->Size = System::Drawing::Size(109, 23);
 			this->Mostar_mr->TabIndex = 13;
@@ -226,7 +230,7 @@ namespace Lista_Dinamica_Forms {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(375, 26);
+			this->button1->Location = System::Drawing::Point(555, 26);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(109, 23);
 			this->button1->TabIndex = 14;
@@ -234,12 +238,34 @@ namespace Lista_Dinamica_Forms {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
+			// BclearMem
+			// 
+			this->BclearMem->Location = System::Drawing::Point(145, 25);
+			this->BclearMem->Name = L"BclearMem";
+			this->BclearMem->Size = System::Drawing::Size(84, 23);
+			this->BclearMem->TabIndex = 15;
+			this->BclearMem->Text = L"CLRM";
+			this->BclearMem->UseVisualStyleBackColor = true;
+			this->BclearMem->Click += gcnew System::EventHandler(this, &MyForm::BclearMem_Click);
+			// 
+			// CLRList
+			// 
+			this->CLRList->Location = System::Drawing::Point(235, 25);
+			this->CLRList->Name = L"CLRList";
+			this->CLRList->Size = System::Drawing::Size(84, 23);
+			this->CLRList->TabIndex = 16;
+			this->CLRList->Text = L"CLRList";
+			this->CLRList->UseVisualStyleBackColor = true;
+			this->CLRList->Click += gcnew System::EventHandler(this, &MyForm::CLRList_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->ClientSize = System::Drawing::Size(706, 242);
+			this->Controls->Add(this->CLRList);
+			this->Controls->Add(this->BclearMem);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Mostar_mr);
 			this->Controls->Add(this->Binsertar_mr);
@@ -332,6 +358,14 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	IOS.Memoria_Str_Grid(GridL2);
 	IOS2.ThisM(APPS2.ListaDim_Memoria(APPS2.ThisL()));
 	IOS2.Memoria_Str_Grid(GridL3);
+}
+private: System::Void BclearMem_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	IO2.ClearMem();
+}
+private: System::Void CLRList_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APP.ClearList();
 }
 };
 }

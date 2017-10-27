@@ -158,9 +158,9 @@ public:
 	{
 		return p->Elemento();
 	}
-	void Lista(Nodo<tipo>*pos, Nodo<tipo> val)
+	void Lista(Nodo<tipo>*pos, tipo val)
 	{
-		pos->Elemento(val.Elemento());
+		pos->Elemento(val);
 	}
 	void ThisL(Lista_Dinamica<tipo> x) { *this = x; }
 	Lista_Dinamica<tipo> ThisL() { return *this; }

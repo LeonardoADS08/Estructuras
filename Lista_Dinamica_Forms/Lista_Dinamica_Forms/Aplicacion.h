@@ -45,6 +45,14 @@ public:
 		}
 		else { return false; }
 	}
+	void ClearList()
+	{
+		Nodo<tipo> aux;
+		while (!this->ListaVacia())
+		{
+			this->Eliminar(nullptr, aux);
+		}
+	}
 	//procesos sobre si misma
 	void Invertir()
 	{

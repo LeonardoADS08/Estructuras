@@ -145,10 +145,10 @@ public:
 
 	void Intercambiar(Nodo<tipo>*p, Nodo<tipo>*q)
 	{
-		Nodo<tipo> prim,sec;
+		tipo prim,sec;
 
-		prim.Elemento(this->Lista(p));
-		sec.Elemento(this->Lista(q));
+		prim=this->Lista(p);
+		sec=this->Lista(q);
 
 
 		this->Lista(q, prim);
@@ -158,9 +158,9 @@ public:
 	{
 		return p->Elemento();
 	}
-	void Lista(Nodo<tipo>*pos, Nodo<tipo> val)
+	void Lista(Nodo<tipo>*pos, tipo val)
 	{
-		pos->Elemento(val.Elemento());
+		pos->Elemento(val);
 	}
 	void ThisL(Lista_Dinamica<tipo> x) { *this = x; }
 	Lista_Dinamica<tipo> ThisL() { return *this; }
