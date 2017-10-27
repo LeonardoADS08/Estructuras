@@ -85,16 +85,13 @@ public:
 
 	void  Intercambiar(int p, int q)
 	{
-		tipo dato;
+		tipo dato,dato2;
 		Nodo<tipo> nodo2, nodo;
-
-		dato = TLista(p).Elemento();
-		nodo2 = TLista(p);
-		nodo2.Elemento(TLista(q).Elemento());
-		TLista(p, nodo2);
-		nodo = TLista(q);
-		nodo.Elemento(dato);
-		TLista(q, nodo);
+		dato = this->TLista(p);
+		dato2 = this->TLista(q);
+		this->TLista(p,dato2);
+		this->TLista(q, dato);
+		
 
 	}
 	void Ordenar()
@@ -107,7 +104,7 @@ public:
 			q = this->Proximo(p);
 			while (q != fin)
 			{
-				if (TLista(p).Elemento()>TLista(q).Elemento())
+				if (TLista(p)>TLista(q))
 				{
 					Intercambiar(p, q);
 				}
@@ -125,11 +122,11 @@ public:
 		p = this->Primero();
 		while (p != fin)
 		{
-			nodo = this->TLista(p);
+			nodo.Elemento(this->TLista(p));
 			q = this->Proximo(p);
 			while (q != fin)
 			{
-				nodo1 = this->TLista(q);
+				nodo1.Elemento(this->TLista(q));
 				if (nodo.Elemento() == nodo1.Elemento())
 				{
 					r = this->Anterior(q);
@@ -157,7 +154,7 @@ public:
 		{
 			while (p != f)
 			{
-				if (this->TLista(p).Elemento() > x.Elemento())
+				if (this->TLista(p) > x.Elemento())
 				{
 
 					if (p == this->Primero())
@@ -230,7 +227,7 @@ public:
 		int p = this->Primero();
 		while (p != fin)
 		{
-			var = this->TLista(p);
+			var.Elemento(this->TLista(p));
 			if (ValidoParaSN(var.Elemento()))
 			{
 				r = this->Anterior(p);
@@ -252,55 +249,91 @@ public:
 	}
 	void SumarPolinomio()
 	{
-		//el primero en salir deberia ser el mayor;
-		int iA = A.Primero(), iB =B.Primero(), FinA = A.Fin_Lista(), FinB = B.Fin_Lista(), antA = -1, antB = -1;
-		Nodo<Monomio> nodoAux;
-		Monomio auxA, auxB;
-		while (iA != FinA || iB != FinB)
+		int primA = A.Primero();
+		int primB = B.Primero();
+		Monomio aux,dos;
+		Nodo<Monomio>var;
+		while (primA != A.Fin_Lista())
 		{
-			auxA = A.TLista(iA).Elemento();
-			auxB = B.TLista(iB).Elemento();
-			if (auxA.Exponente() == auxB.Exponente())
-			{
-				auxA.Coeficiente(auxA.Coeficiente() + auxB.Coeficiente());
-				nodoAux.Elemento(auxA);
-				A.TLista(iA, nodoAux);
 
-				// Solo aumenta si no esta en el final
-				if (iA != FinA)
-				{
-					antA = iA;
-					iA = A.Proximo(iA);
-				}
-				if (iB != FinB)
-				{
-					antB = iB;
-					iB = B.Proximo(iB);
-				}
-
-			}
-			else if (auxB.Exponente() > auxA.Exponente())
+			aux = A.TLista(primA);
+			primB = B.Primero();
+			while (primB != B.Fin_Lista())
 			{
-				nodoAux.Elemento(auxB);
-				A.Insertar(nodoAux, antA);
-
-				if (iB != FinB)
+				if (aux.Exponente() > B.TLista(primB).Exponente())
 				{
-					antB = iB;
-					iB = B.Proximo(iB);
+					var.Elemento(aux);
+					if (primB == B.Primero())
+					{
+						
+						B.Insertar(var, -1); break;
+					}
+					else
+					{
+						B.Insertar(var, B.Anterior(primB)); break;
+					}
 				}
+				else if (aux.Exponente() == B.TLista(primB).Exponente())
+				{
+					aux.Coeficiente(aux.Coeficiente() + B.TLista(primB).Coeficiente());
+					
+					B.TLista(primB, aux); break;
+				}
+				else { primB = B.Proximo(primB); }
 			}
-			else
+			if(primB==B.Fin_Lista())
 			{
-				if (iA != FinA)
-				{
-					antA = iA;
-					iA = A.Proximo(iA);
-				}
+				var.Elemento(aux);
+				B.Insertar(var, B.Ultimo());
 			}
+			primA = A.Proximo(primA);
+
+
 		}
 		
 		
+	}
+	void EliminarExcedentes(Lista<Monomio>&x)
+	{
+		int i = x.Primero(),q;
+		Nodo<Monomio>y;
+		while (i != x.Fin_Lista())
+		{
+
+			if (x.TLista(i).Coeficiente() == 0)
+			{
+				if (i == x.Primero())
+				{
+					x.Extraer(y, -1);
+				}
+				else
+				{
+					q = x.Anterior(i);
+					x.Extraer(y, x.Anterior(i));
+					i = q;
+				}
+			}
+			i = x.Proximo(i);
+		}
+
+	}
+	void RestarPolinomio()
+	{
+		int i = A.Primero();
+		Monomio aux;
+		
+		while (i != A.Fin_Lista())
+		{
+			aux = A.TLista(i);
+			aux.Coeficiente(aux.Coeficiente()*-1);
+			A.TLista(i, aux);
+			i = A.Proximo(i);
+
+		}
+		this->SumarPolinomio();
+		this->EliminarExcedentes(this->B);
+
+
 	}
 	Nodo<Persona> LaCosaDeManolo(int pos,int varus)// por editar
 	{
@@ -309,7 +342,7 @@ public:
 		Nodo<Persona> aux;
 		if (pos == -1)
 		{
-			pasos = this->TLista(this->Primero()).Elemento().Numero();
+			pasos = this->TLista(this->Primero()).Numero();
 			p = this->Primero();
 		}
 		else

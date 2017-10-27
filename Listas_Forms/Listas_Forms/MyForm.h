@@ -383,6 +383,7 @@ namespace Listas_Forms {
 			this->Bresta->TabIndex = 26;
 			this->Bresta->Text = L"Resta";
 			this->Bresta->UseVisualStyleBackColor = true;
+			this->Bresta->Click += gcnew System::EventHandler(this, &MyForm::Bresta_Click);
 			// 
 			// BSuma
 			// 
@@ -450,6 +451,7 @@ namespace Listas_Forms {
 			this->Brepetidos->TabIndex = 32;
 			this->Brepetidos->Text = L"Eliminar Repetidos";
 			this->Brepetidos->UseVisualStyleBackColor = true;
+			this->Brepetidos->Click += gcnew System::EventHandler(this, &MyForm::Brepetidos_Click_1);
 			// 
 			// GridP
 			// 
@@ -679,7 +681,7 @@ private: System::Void Bmostrar_A_Click(System::Object^  sender, System::EventArg
 private: System::Void BSuma_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	APPM.SumarPolinomio();
-	IO2.ThisM(APPM.Polinomio_Memoria(APPM.This_Polinomio('A')));
+	IO2.ThisM(APPM.Polinomio_Memoria(APPM.This_Polinomio('B')));
 	IO2.Memoria_Grilla(GridC);
 }
 private: System::Void BinsertarB_Click(System::Object^  sender, System::EventArgs^  e) 
@@ -721,6 +723,19 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	TtamanoP->Text = Convert::ToString(IOS.Tamano());
 	IOS.Clear(GridP2);
 
+}
+private: System::Void Brepetidos_Click_1(System::Object^  sender, System::EventArgs^  e) 
+{
+	APP.Eliminar_repetidos();
+	APP2.ThisM(APP.Lista_Memoria(APP.ThisL()));
+	IO2.ThisM(APP2.ThisM());
+	IO2.Memoria_Grilla(Grid3);
+}
+private: System::Void Bresta_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APPM.RestarPolinomio();
+	IO2.ThisM(APPM.Polinomio_Memoria(APPM.This_Polinomio('B')));
+	IO2.Memoria_Grilla(GridC);
 }
 };
 }

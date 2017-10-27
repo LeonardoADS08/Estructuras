@@ -13,8 +13,8 @@ class Lista
 	void EliminarNodo(int);
 public:
 	Lista();
-	Nodo<tipo> TLista(int p) { return _lista[p]; }
-	void TLista(int p, Nodo<tipo> var) { _lista[p] = var; }
+	tipo TLista(int p) { return _lista[p].Elemento(); }
+	void TLista(int p, tipo var) { _lista[p].Elemento( var); }
 	bool ListaVacia();
 	bool ListaLLena();
 	bool  Insertar(Nodo<tipo>x, int p);
