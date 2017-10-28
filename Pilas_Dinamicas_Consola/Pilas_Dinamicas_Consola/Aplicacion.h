@@ -88,7 +88,40 @@ public:
 	}
 	void EliminarNrepetidos(int n)
 	{
+		Nodo<tipo>basofia,uno,dos;
+		Pila_Din<tipo> puros,aux;
+		int cont = 0;
+		while (!this->Pila_Vacia())
+		{
+			this->Extraer(uno);
+			while (!this->Pila_Vacia())
+			{
+				this->Tope(dos);
+				if (dos.Elemento() == uno.Elemento())
+				{
+					if (cont < n)
+					{
+						cont++;
+						this->Extraer(dos);
+						aux.Insertar(dos);
+					}
+					else
+					{
+						this->Extraer(basofia);
+					}
+				}
+				else
+				{
+					this->Extraer(dos);
+					aux.Insertar(dos);
+				}
+			}
+			cont = 0;
+			this->ThisPD(aux);
+			puros.Insertar(uno);
 
+		}
+		this->ThisPD(puros);
 	}
 	~Aplicacion(){}
 };
