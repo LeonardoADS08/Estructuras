@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Aplicacion.h" />
     <ClInclude Include="Memoria.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Pila_Din.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Aplicacion.cpp" />
     <ClCompile Include="Memoria.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Pilas_Dinamicas_Consola.cpp" />

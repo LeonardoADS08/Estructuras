@@ -48,10 +48,29 @@ public:
 
 	}
 	//busqueda de la posicion actual de la mem
-	Nodo<tipo>*Tope()
+	bool Tope(Nodo<tipo>&x)
 	{
-		return _tope;
+		Nodo<tipo>*y = nullptr;
+		if (Pila_Vacia())
+		{
+			return false;
+		}
+		else
+		{
+			x.Elemento(_tope->Elemento());//posible conflicto
+			x.Apuntador(nullptr);
+
+			return true;
+		}
 	}
+	Pila_Din<tipo> ThisPD()
+	{
+		return *this;
+	}
+	void ThisPD(Pila_Din<tipo> x)
+	{
+		*this = x;
+	 }
 	~Pila_Din(){}
 };
 
