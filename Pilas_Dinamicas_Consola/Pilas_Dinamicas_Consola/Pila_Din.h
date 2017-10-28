@@ -5,6 +5,7 @@ class Pila_Din
 {
 	Nodo<tipo>*_tope;
 	//buscar y generar espacios
+private:
 	Nodo<tipo>*Buscar_Nodo()
 	{
 		return new Nodo<tipo>;
@@ -48,29 +49,33 @@ public:
 
 	}
 	//busqueda de la posicion actual de la mem
-	bool Tope(Nodo<tipo>&x)
-	{
-		Nodo<tipo>*y = nullptr;
-		if (Pila_Vacia())
-		{
-			return false;
-		}
-		else
-		{
-			x.Elemento(_tope->Elemento());//posible conflicto
-			x.Apuntador(nullptr);
+	bool Tope(Nodo<tipo>& x);
 
-			return true;
-		}
-	}
 	Pila_Din<tipo> ThisPD()
 	{
 		return *this;
 	}
-	void ThisPD(Pila_Din<tipo> x)
+	void ThisPD(const Pila_Din<tipo> x)
 	{
 		*this = x;
 	 }
 	~Pila_Din(){}
 };
+
+template <class tipo>
+bool Pila_Din<tipo>::Tope(Nodo<tipo>& x)
+{
+	Nodo<tipo>* y = nullptr;
+	if (Pila_Vacia())
+	{
+		return false;
+	}
+	else
+	{
+		x.Elemento(_tope->Elemento());//posible conflicto
+		x.Apuntador(nullptr);
+
+		return true;
+	}
+}
 
