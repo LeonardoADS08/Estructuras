@@ -47,11 +47,13 @@ public:
 		}
 		else
 		{
-			this->Extraer(uno);
+			this->Tope(uno);
 			while (elem.Elemento() > uno.Elemento() && !this->Pila_Vacia())
 			{
-				aux1.Insertar(uno);
 				this->Extraer(uno);
+				aux1.Insertar(uno);
+				this->Tope(uno);
+				
 			}
 			this->Insertar(elem);
 			while (!aux1.Pila_Vacia())
@@ -61,6 +63,32 @@ public:
 			}
 		
 		}
+	}
+	void Invertir()
+	{
+		Pila_Din<tipo> aux;
+		Nodo<tipo>uno;
+		while (!this->Pila_Vacia())
+		{
+			this->Extraer(uno);
+			aux.Insertar(uno);
+		}
+		ThisPD(aux);
+	}
+	void OrdenarPila()
+	{
+		Aplicacion<tipo> aux;
+		Nodo<tipo> uno, dos;
+		while (!this->Pila_Vacia())
+		{
+			this->Extraer(uno);
+			aux.IngresarOrdenadamente(uno);
+		}
+		this->ThisPD(aux.ThisPD());
+	}
+	void EliminarNrepetidos(int n)
+	{
+
 	}
 	~Aplicacion(){}
 };
