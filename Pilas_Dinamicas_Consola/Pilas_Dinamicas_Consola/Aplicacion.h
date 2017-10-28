@@ -39,14 +39,27 @@ public:
 	//operaciones sobre la misma pila
 	void IngresarOrdenadamente(Nodo<tipo> elem)
 	{
-		Pila_Din<tipo> aux1, aux2;
+		Pila_Din<tipo> aux1;
+		Nodo<tipo> uno;
 		if (this->Pila_Vacia())
 		{
 			this->Insertar(elem);
 		}
 		else
 		{
-			while(!this->Pila_Vacia()&&)
+			this->Extraer(uno);
+			while (elem.Elemento() > uno.Elemento() && !this->Pila_Vacia())
+			{
+				aux1.Insertar(uno);
+				this->Extraer(uno);
+			}
+			this->Insertar(elem);
+			while (!aux1.Pila_Vacia())
+			{
+				aux1.Extraer(uno);
+				this->Insertar(uno);
+			}
+		
 		}
 	}
 	~Aplicacion(){}
