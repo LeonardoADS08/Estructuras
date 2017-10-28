@@ -25,14 +25,46 @@ public:
 template <class tipo>
 void Aplicacion<tipo>::EliminarNrepetidos(int n)
 {
+	int cont = 0;
 	Nodo<tipo> uno, dos;
-	Cola_Din<tipo>aux, aux2;
+	Cola_Din<tipo>perfectos, aux2;
 	while(!this->Cola_Vacia())
 	{
-	
+		this->Eliminar(uno);
+		while (!this->Cola_Vacia())
+		{
+			this->Frente(dos);
+			if(uno.Elemento()==dos.Elemento())
+			{
+				if(cont<n-1)
+				{
+					cont++;
+					this->Eliminar(dos);
+					aux2.Insertar(dos);
+				}
+				else
+				{
+					this->Eliminar(dos);
+				}
+			}
+			else
+			{
+				this->Eliminar(dos);
+				aux2.Insertar(dos);
+			}
+			
+		}
+		while (!aux2.Cola_Vacia())
+		{
+			aux2.Eliminar(dos);
+			this->Insertar(dos);
+		}
+		perfectos.Insertar(uno);
 
 
 	}
+
+	this->ThisCD(perfectos);
 }
 
 template <class tipo>
