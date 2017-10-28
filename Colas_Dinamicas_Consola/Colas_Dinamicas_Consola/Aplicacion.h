@@ -25,7 +25,12 @@ public:
 template <class tipo>
 void Aplicacion<tipo>::EliminarNrepetidos(int n)
 {
-
+	Nodo<tipo> uno, dos;
+	Cola_Din<tipo>aux, aux2;
+	while(!this->Cola_Vacia())
+	{
+	
+	}
 }
 
 template <class tipo>

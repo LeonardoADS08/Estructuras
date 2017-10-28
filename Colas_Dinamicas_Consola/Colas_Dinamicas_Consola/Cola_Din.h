@@ -86,6 +86,15 @@ public:
 	{
 		*this = x;
 	}
+	void VaciarCola(Cola_Din<tipo>x)//no funciona DUNOW
+	{
+		Nodo<tipo>aux;
+		while(!x.Cola_Vacia())
+		{
+			x.Eliminar(aux);
+			this->Insertar(aux);
+		}
+	}
 	~Cola_Din(){}
 };
 
