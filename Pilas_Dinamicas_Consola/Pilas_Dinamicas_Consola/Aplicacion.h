@@ -9,11 +9,9 @@ public:
 	//relacion con la interzas y la memoria
 	void Memoria_PilaDim(Memoria<tipo>x)
 	{
-		int i;
-		Nodo<tipo> var;
-		for (i = 0; i < x.Tamano(); i++)
+		for (int i = 0; i < x.Tamano(); i++)
 		{
-			var = x.Arreglo(i);
+			Nodo<tipo> var = x.Arreglo(i);
 			this->Insertar(var);
 		}
 	}
@@ -29,7 +27,7 @@ public:
 			i++;
 		}
 		x.Tamano(i);
-		//le devuelve a la lista su contenido original, sep es todo un desmadre
+		//le devuelve a la lista su contenido original, sep estodo un desmadre
 		for (int j = 0; j < x.Tamano(); j++)
 		{
 			this->Insertar(x.Arreglo(x.Tamano() - 1 - j));

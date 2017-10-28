@@ -6,7 +6,7 @@ class Pila_Din
 	Nodo<tipo>*_tope;
 	//buscar y generar espacios
 private:
-	Nodo<tipo>*Buscar_Nodo()
+	Nodo<tipo>*buscar_nodo()
 	{
 		return new Nodo<tipo>;
 	}
@@ -24,7 +24,7 @@ public:
 	}
 	bool Insertar(Nodo<tipo>x)
 	{
-		Nodo<tipo>*y=this->Buscar_Nodo();
+		Nodo<tipo>*y=this->buscar_nodo();
 		y->Apuntador(_tope);
 		y->Elemento(x.Elemento());
 		_tope = y;
