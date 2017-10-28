@@ -30,6 +30,8 @@ void Aplicacion<tipo>::EliminarNrepetidos(int n)
 	while(!this->Cola_Vacia())
 	{
 	
+
+
 	}
 }
 

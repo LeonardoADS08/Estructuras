@@ -3,8 +3,8 @@
 template<class tipo>
 class Cola_Din
 {
-	Nodo<tipo> *final_;
-	Nodo<tipo> *frente_;
+	Nodo<tipo> *_final;
+	Nodo<tipo> *_frente;
 private:
 	Nodo<tipo>*Buscar_Nodo()
 	{
@@ -16,10 +16,10 @@ private:
 	}
 
 public:
-	Cola_Din() { final_ = nullptr; frente_ = nullptr; }
+	Cola_Din() { _final = nullptr; _frente = nullptr; }
 	bool Cola_Vacia()
 	{
-		if (final_ == nullptr)
+		if (_final == nullptr)
 		{
 			return true;
 		}
@@ -31,7 +31,7 @@ public:
 		if (this->Cola_Vacia()) { return false; }
 		else
 		{
-			val.Elemento(frente_->Elemento());
+			val.Elemento(_frente->Elemento());
 			val.Apuntador(nullptr);
 			
 			return true;
@@ -39,7 +39,7 @@ public:
 	}
 	Nodo<tipo>*Final()
 	{
-		return final_;
+		return _final;
 	}
 	bool Insertar(Nodo<tipo>val)
 	{
@@ -48,13 +48,13 @@ public:
 		y->Elemento(val.Elemento());
 		if (this->Cola_Vacia())
 		{
-			final_ = y;
-			frente_ = y;
+			_final = y;
+			_frente = y;
 		}
 		else
 		{
-			final_->Apuntador(y);
-			final_ = y;
+			_final->Apuntador(y);
+			_final = y;
 		}
 		return true;
 	}
@@ -64,13 +64,13 @@ public:
 		if (this->Cola_Vacia()) { return false; }
 		else
 		{
-			val.Elemento(frente_->Elemento());
+			val.Elemento(_frente->Elemento());
 			val.Apuntador(nullptr);
-			y = frente_;
-			frente_ = frente_->Apuntador();
-			if (frente_ == nullptr)
+			y = _frente;
+			_frente = _frente->Apuntador();
+			if (_frente == nullptr)
 			{
-				final_ = nullptr;
+				_final = nullptr;
 			}
 			this->Eliminar_Nodo(y);
 			return true;
