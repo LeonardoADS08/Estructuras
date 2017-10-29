@@ -116,35 +116,39 @@ public:
 	
 	void EliminarNrepetidos(int cont)
 	{
-		Nodo<tipo>*p,*q,*aux,f;
-		p = this->Primero();
-		int copias=0;
+		tipo dos;
+		int pasos = 0;
+		Nodo<tipo> *p = this->Primero();
+		Nodo<tipo> *q = p;
+		Nodo<tipo>*pos = nullptr, x;
 		while (p != this->Fin_Lista())
 		{
-			q = this->Primero();
-			while (p != this->Fin_Lista())
+			
+			while (q != this->Fin_Lista())
 			{
-				if (this->Lista(p) == this->Lista(q))
+				if (this->Lista(q) == this->Lista(p))
 				{
-					if(copias<cont)
+					if (pasos<cont )
 					{
-						copias++;
+						pasos++;
+						q = this->Proximo(q);
 					}
 					else
 					{
-						aux = this->Anterior(p);
-						this->Eliminar(aux, f);
-						p = aux;
-					
+						pos = this->Anterior(q);
+						this->Eliminar(pos, x);
+						q = pos;
+						q = this->Proximo(q);
 					}
-					
-
 				}
-				p = this->Proximo(p);
-				
+				else
+				{
+					q = this->Proximo(q);
+				}
 			}
-			copias = 0;
-			q = this->Proximo(q);
+			q = this->Primero();
+			pasos = 0;
+			p = this->Proximo(p);
 		}
 	}
 
