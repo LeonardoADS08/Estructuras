@@ -27,19 +27,19 @@
     <ClInclude Include="Form1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Nodo.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Cola_Din.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Aplicacion.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="INTERFAZ.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Memoria.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="INTERFAZ.h">
+    <ClInclude Include="Nodo.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Pila_Din.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,9 +59,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Form1.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="Cola_Din.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

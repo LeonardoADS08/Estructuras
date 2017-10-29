@@ -3,7 +3,9 @@
 template<class tipo>
 class Cola_Din
 {
-	Nodo<tipo>*_final,*_frente;
+	Nodo<tipo> *_final;
+	Nodo<tipo> *_frente;
+private:
 	Nodo<tipo>*Buscar_Nodo()
 	{
 		return new Nodo<tipo>;
@@ -23,9 +25,17 @@ public:
 		}
 		else { return false; }
 	}
-	Nodo<tipo>*Frente()
+	bool Frente(Nodo<tipo>&val)
 	{
-		return _frente;
+		Nodo<tipo>*y = nullptr;
+		if (this->Cola_Vacia()) { return false; }
+		else
+		{
+			val.Elemento(_frente->Elemento());
+			val.Apuntador(nullptr);
+			
+			return true;
+		}
 	}
 	Nodo<tipo>*Final()
 	{
@@ -46,10 +56,11 @@ public:
 			_final->Apuntador(y);
 			_final = y;
 		}
-
+		return true;
 	}
 	bool Eliminar(Nodo<tipo>&val)
 	{
+		Nodo<tipo>*y = nullptr;
 		if (this->Cola_Vacia()) { return false; }
 		else
 		{
@@ -63,6 +74,25 @@ public:
 			}
 			this->Eliminar_Nodo(y);
 			return true;
+		}
+	}
+
+	//general
+	Cola_Din<tipo> ThisCD()
+	{
+		return *this;
+	}
+	void ThisCD(Cola_Din<tipo> x)
+	{
+		*this = x;
+	}
+	void VaciarCola(Cola_Din<tipo>x)//no funciona DUNOW
+	{
+		Nodo<tipo>aux;
+		while(!x.Cola_Vacia())
+		{
+			x.Eliminar(aux);
+			this->Insertar(aux);
 		}
 	}
 	~Cola_Din(){}
