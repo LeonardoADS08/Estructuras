@@ -12,7 +12,7 @@ public:
 	Memoria<tipo> ColaDin_Memoria();
 	//operaciones sobre la misma pila
 	void IngresarOrdenadamente(Nodo<tipo> elem);
-
+	
 	void Invertir();
 
 	void OrdenarCola();
@@ -26,6 +26,7 @@ template <class tipo>
 void Aplicacion<tipo>::EliminarNrepetidos(int n)
 {
 	int cont = 0;
+	
 	Nodo<tipo> uno, dos;
 	Cola_Din<tipo>perfectos, aux2;
 	while(!this->Cola_Vacia())
