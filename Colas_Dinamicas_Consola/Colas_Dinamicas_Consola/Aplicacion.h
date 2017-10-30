@@ -142,7 +142,6 @@ void Aplicacion<tipo>::Invertir()
 {
 	Nodo<tipo>uno, dos;
 	Cola_Din<tipo>aux, aux2;
-	bool quedauno = false;
 	while (!this->Cola_Vacia())
 	{
 		while(!this->Cola_Vacia())

@@ -108,11 +108,37 @@ public:
 	
 	Lista_Dinamica<tipo> EliminarNrepetidos(int cont)
 	{
-		Nodo<tipo>*p,*q;
-		p = this->Primero();
+		tipo dos;
+		int pasos = 0;
+		Nodo<tipo> *p = this->Primero();
+		Nodo<tipo> *q = p;
+		Nodo<tipo>*pos=nullptr,x;
 		while (p != this->Fin_Lista())
 		{
-			
+			tipo uno = this->Lista(p);
+			while(q!=this->Fin_Lista())
+			{
+				if(this->Lista(q)==this->Lista(p))
+				{
+					if(pasos<cont-1)
+					{
+					pasos++;
+					q = this->Proximo(q);
+					}
+					else
+					{
+						pos = this->Anterior(q);
+						this->Eliminar(pos, x);
+						q = pos;
+					}
+				}
+				else
+				{
+					q = this->Proximo(q);
+				}
+			}
+			pasos = 0;
+			p = this->Proximo(p);
 		}
 	}
 	
