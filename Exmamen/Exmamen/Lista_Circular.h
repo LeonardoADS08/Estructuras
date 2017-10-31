@@ -102,7 +102,7 @@ public:
 			return true;
 		}
 	}
-	int Proximo(int i) { return _lista[i].Apuntador(); }
+	int Proximo(int i) { return _Lista[i].Apuntador(); }
 	int Ultimo()
 	{
 		return _list;
@@ -142,7 +142,7 @@ public:
 	{
 		return _Lista[pos];
 	}
-	int Anterior(int pos)
+	int Anterior(int p)
 	{
 		int i = -1,q,w;
 		if (this->ListaVacia()) { return -1; }
@@ -162,5 +162,7 @@ public:
 		Nodo<tipo> aux1, aux2;
 		
 	}
+	tipo Lista(int pos) { return _Lista[pos].Elemento(); }
+	void Lista(int pos, tipo x) { _Lista[pos].Elemento(x); }
 	~Lista_Circular(){}
 };

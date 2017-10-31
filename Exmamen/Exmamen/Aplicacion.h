@@ -59,13 +59,60 @@ public:
 		aux.Tamano(i);
 		return aux;
 	}
-	Lista_Circular<Material> Reportedepromedio()
+
+
+
+	void Memoria_Materiales2(Memoria<string> x)
 	{
-		Lista_Circular<Material> _final;
+		
+		NodoEstatico<tipo> aux;
+		tipo mat;
+		for (int i = 0; i<x.Tamano(); i = i + 3)
+		{
+			mat.Fecha(x.Arreglo(i).Elemento());
+			mat.Nombre(x.Arreglo(i + 1).Elemento());
+			mat.Precio((atoi((x.Arreglo(i + 2).Elemento()).c_str())));
+			aux.Elemento(mat);
+			A.Insertar(aux, -1);
+
+		}
+	}
+	Memoria<string> Material_Memoria2()
+	{
+		Memoria<string>aux;
+		int i = 0;
+		Nodo<string> str;
+		Nodo<tipo> y;
+		int p = A.Primero();
+	do
+		{
+			y.Elemento(A.Lista(p));
+			str.Elemento(y.Elemento().Fecha());
+			aux.Arreglo(str, i);
+			i++;
+			str.Elemento(y.Elemento().Nombre());
+			aux.Arreglo(str, i);
+			i++;
+
+			//to_string(var.Elemento().Numero()));
+			str.Elemento(to_string(y.Elemento().Precio()));
+			aux.Arreglo(str, i);
+			i++;
+			p = A.Proximo(p);
+	} while (p != A.Fin_Lista());
+		aux.Tamano(i);
+		return aux;
+	}
+	
+	
+	
+	Lista_Circular<tipo> Reportedepromedio()
+	{
+		Lista_Circular<tipo> _final;
 		int prom = 0,saldo=0;
-		Nodo<Material>*p=this->Primero(),*q=p, aux,*o;
-		NodoEstatico<Material> yyy;
-		Material auros;
+		Nodo<tipo>*p=this->Primero(),*q=p, aux,*o;
+		NodoEstatico<tipo> h;
+		tipo auros;
 		while(p!=this->Fin_Lista())
 		{
 			aux.Elemento(this->Lista(p));
@@ -97,19 +144,59 @@ public:
 			saldo = (int)(saldo / prom);
 			auros.Precio(saldo);
 
-			yyy.Elemento(auros);
-			_final.Insertar(yyy, -1);
+			h.Elemento(auros);
+			_final.Insertar(h, -1);
 			q = this->Primero();
 			p = this->Proximo(p);
 		}
 		return _final;
 	}
 	
-	Memoria<string> ListaCriualr_mem(Lista_Circular<Material> x)
+	void ReportePromedioInverso()
+	{
+		
+		int p = A.Primero();
+		int q = p;
+		int pos;
+		int sol = 0, cant = 0;
+		NodoEstatico<tipo> dos;
+		tipo auxest;
+		Nodo<tipo>auxdim;
+		Lista_Dinamica<tipo> d;
+		do
+		{
+			auxest.Nombre(A.Lista(p).Nombre());
+			cant = 1;
+			sol = A.Lista(p).Precio();
+			do
+			{
+				if(A.Lista(p).Nombre()==A.Lista(q).Nombre()&&p!=q)
+				{
+					cant++;
+					sol += A.Lista(q).Precio();
+					pos = A.Anterior(q);
+					A.Eliminar(dos, pos);
+					q = A.Proximo(pos);
+				}
+				else
+				{
+					q = A.Proximo(q);
+				}
+			} while (q != A.Fin_Lista());
+			auxest.Precio(sol / cant);
+			auxdim.Elemento(auxest);
+			d.Insertar(nullptr, auxdim);
+			q = A.Primero();
+			p = A.Proximo(p);
+		} while (p != A.Fin_Lista());
+	
+		this->ThisL(d);
+	}
+	Memoria<string> ListaCriualr_mem(Lista_Circular<tipo> x)
 	{
 		int i = 0;
 		Memoria<string> t;
-		NodoEstatico<Material>y;
+		NodoEstatico<tipo>y;
 		Nodo<string> u;
 		while(!x.ListaVacia())
 		{
@@ -125,6 +212,8 @@ public:
 		return t;
 
 	}
+
+
 
 
 	//clasicos de manejo con interfaz
@@ -154,149 +243,7 @@ public:
 		aux.Tamano(i);
 		return aux;
 	}
-	bool ValidoParaSn(string aux)
-	{
-		int i = 0;
-		if(aux[aux.length()-1]=='S'|| aux[aux.length() - 1] == 's' ||  aux[aux.length() - 1] == 'N' ||  aux[aux.length() - 1] == 'n' )
-		{
-			return true;
-		}
-		else { return false; }
-	}
-	void ClearList()
-	{
-		Nodo<tipo> aux;
-		while (!this->ListaVacia())
-		{
-			this->Eliminar(nullptr, aux);
-		}
-	}
-	//procesos sobre si misma
-	void Invertir()
-	{
-		Nodo<tipo>*f,*q,aux;
-		q = this->Primero();
-		f = this->Primero();
-
-		while (q != this->Ultimo())
-		{
-			this->Eliminar(q, aux);
-			this->Insertar(nullptr, aux);
-		}
-	}
-	void IngresarOrdenadamente(Nodo<tipo> x)
-	{
-
-		Nodo<tipo>*p = this->Primero();
-		Nodo<tipo>*f = this->Fin_Lista();
-
-		if (this->ListaVacia())
-		{
-			this->Insertar(nullptr, x);
-		}
-		else
-		{
-			while (p != f &&this->Lista(p) >x.Elemento())
-			{
-				p = this->Proximo(p);
-
-			}
-			if (p == this->Primero())
-			{
-				this->Insertar(nullptr, x);
-
-			}
-			else
-			{
-				this->Insertar(this->Anterior(p), x);
-			}
-		}
-
-	}
-	void Ordenar()
-	{
-		Nodo<tipo>*p, *q, *f, *b;
-		p = this->Primero();
-		while (p != this->Fin_Lista())
-		{
-			q =this->Primero();
-			while (q != this->Ultimo())
-			{
-				if (this->Lista(p) > this->Lista(q))
-				{
-					this->Intercambiar(p, q);
-				}
-				q = this->Proximo(q);
-			}
-			p = this->Proximo(p);
-		}
-	}
 	
-	void EliminarNrepetidos(int cont)
-	{
-		tipo dos;
-		int pasos = 0;
-		Nodo<tipo> *p = this->Primero();
-		Nodo<tipo> *q = p;
-		Nodo<tipo>*pos = nullptr, x;
-		while (p != this->Fin_Lista())
-		{
-			
-			while (q != this->Fin_Lista())
-			{
-				if (this->Lista(q) == this->Lista(p))
-				{
-					if (pasos<cont )
-					{
-						pasos++;
-						q = this->Proximo(q);
-					}
-					else
-					{
-						pos = this->Anterior(q);
-						this->Eliminar(pos, x);
-						q = pos;
-						q = this->Proximo(q);
-					}
-				}
-				else
-				{
-					q = this->Proximo(q);
-				}
-			}
-			q = this->Primero();
-			pasos = 0;
-			p = this->Proximo(p);
-		}
-	}
-
-	Lista_Dinamica<tipo> EliminarSn()
-	{
-		Nodo<tipo> var;
-		Lista_Dinamica<tipo> aux;
-		Nodo<tipo>*p, *q, *r;
-		p = this->Primero();
-		while (p != this->Fin_Lista())
-		{
-			if (ValidoParaSn(this->Lista(p)))
-			{
-				if (p == this->Primero())
-				{
-					this->Eliminar(nullptr, var);
-					
-				}
-				else
-				{
-					r = this->Anterior(p);
-					this->Eliminar(r, var);
-					p = r;
-				}
-				aux.Insertar(nullptr, var); 
-			}
-			p = this->Proximo(p);
-		}
-		return aux;
-	}
 	
 };
 

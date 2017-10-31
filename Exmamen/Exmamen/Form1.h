@@ -45,6 +45,8 @@ namespace CppCLR_WinformsProjekt {
 	private: System::Windows::Forms::DataGridView^  dataGridView2;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::DataGridView^  dataGridView3;
+	private: System::Windows::Forms::Button^  button4;
+	private: System::Windows::Forms::Button^  button5;
 
 	private:
 		/// <summary>
@@ -66,6 +68,8 @@ namespace CppCLR_WinformsProjekt {
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
@@ -133,11 +137,33 @@ namespace CppCLR_WinformsProjekt {
 			this->dataGridView3->Size = System::Drawing::Size(415, 77);
 			this->dataGridView3->TabIndex = 6;
 			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(12, 188);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->TabIndex = 9;
+			this->button4->Text = L"button4";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(12, 159);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(75, 23);
+			this->button5->TabIndex = 8;
+			this->button5->Text = L"button5";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &Form1::button5_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(580, 367);
+			this->Controls->Add(this->button4);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->dataGridView3);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->dataGridView2);
@@ -173,5 +199,20 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	IOS2.ThisM(APPM.ListaCriualr_mem(APPM.ThisA()));
 	IOS2.Memoria_Str_Grid(dataGridView3);
 		}
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IOS.Grid_Memoria_Str(dataGridView1, tentrada);
+
+	APPM.Memoria_Materiales2(IOS.ThisM());
+	IOS2.ThisM(APPM.Material_Memoria2());
+	IOS2.Memoria_Str_Grid(dataGridView2);
+
+}
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	APPM.ReportePromedioInverso();
+	IOS2.ThisM(APPM.Material_Memoria());
+	IOS2.Memoria_Str_Grid(dataGridView3);
+}
 };
 }
