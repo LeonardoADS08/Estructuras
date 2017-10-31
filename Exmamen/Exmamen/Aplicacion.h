@@ -40,12 +40,17 @@ public:
 		Nodo<string> str;
 		Nodo<Material> y;
 		Nodo<tipo>*p = this->Primero(), *q=p;
-		while(p!=this->Fin_Lista())
+		while (p != this->Fin_Lista())
 		{
-			y.Elemento( this->Lista(p));
-			str.Elemento(y.Elemento().Fecha());
+			y.Elemento(this->Lista(p));
+
+			if(y.Elemento().Fecha()!="")
+			{	str.Elemento(y.Elemento().Fecha());
 			aux.Arreglo(str, i);
 			i++;
+		}
+
+
 			str.Elemento(y.Elemento().Nombre());
 			aux.Arreglo(str, i);
 			i++;
