@@ -72,7 +72,7 @@ public:
 	}
 	int Primero()
 	{
-		return _list;
+		return _Lista[_list].Apuntador();
 	}
 	bool Eliminar(NodoEstatico<tipo>&x, int p)
 	{

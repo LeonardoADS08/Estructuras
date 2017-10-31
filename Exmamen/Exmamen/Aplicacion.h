@@ -63,7 +63,7 @@ public:
 	{
 		Lista_Circular<Material> _final;
 		int prom = 0,saldo=0;
-		Nodo<Material>*p=this->Primero(),*q=p, aux;
+		Nodo<Material>*p=this->Primero(),*q=p, aux,*o;
 		NodoEstatico<Material> yyy;
 		Material auros;
 		while(p!=this->Fin_Lista())
@@ -80,7 +80,13 @@ public:
 					
 					prom++;
 					saldo += this->Lista(q).Precio();
+					
+
+					o = this->Anterior(q);
+					this->Eliminar(o, aux);
+					q = o;
 					q = this->Proximo(q);
+					
 
 				}
 				else
