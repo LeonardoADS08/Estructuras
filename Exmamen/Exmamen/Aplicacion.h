@@ -45,11 +45,11 @@ public:
 			y.Elemento(this->Lista(p));
 
 			if(y.Elemento().Fecha()!="")
-			{	str.Elemento(y.Elemento().Fecha());
-			aux.Arreglo(str, i);
-			i++;
-		}
-
+			{
+				str.Elemento(y.Elemento().Fecha());
+				aux.Arreglo(str, i);
+				i++;
+			}
 
 			str.Elemento(y.Elemento().Nombre());
 			aux.Arreglo(str, i);
