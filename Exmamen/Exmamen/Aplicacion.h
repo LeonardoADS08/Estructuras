@@ -15,8 +15,8 @@ public:
 	~Aplicacion(){}
 
 	void ThisA(Lista_Circular<Material> x) { A = x; }
+	
 	Lista_Circular<Material> ThisA() { return A; }
-
 
 	void Memoria_Materiales(Memoria<string> x)
 	{
@@ -33,6 +33,7 @@ public:
 
 		}
 	}
+
 	Memoria<string> Material_Memoria()
 	{
 		Memoria<string>aux;
@@ -65,8 +66,6 @@ public:
 		return aux;
 	}
 
-
-
 	void Memoria_Materiales2(Memoria<string> x)
 	{
 		
@@ -82,6 +81,7 @@ public:
 
 		}
 	}
+
 	Memoria<string> Material_Memoria2()
 	{
 		Memoria<string>aux;
@@ -108,9 +108,7 @@ public:
 		aux.Tamano(i);
 		return aux;
 	}
-	
-	
-	
+		
 	Lista_Circular<tipo> Reportedepromedio()
 	{
 		Lista_Circular<tipo> _final;
@@ -197,6 +195,7 @@ public:
 	
 		this->ThisL(d);
 	}
+	
 	Memoria<string> ListaCriualr_mem(Lista_Circular<tipo> x)
 	{
 		int i = 0;
@@ -218,9 +217,6 @@ public:
 
 	}
 
-
-
-
 	//clasicos de manejo con interfaz
 	void Memoria_ListaDim(Memoria<tipo> x)
 	{
@@ -231,6 +227,7 @@ public:
 		}
 
 	}
+	
 	Memoria<tipo> ListaDim_Memoria(Lista_Dinamica<tipo> x)
 	{
 		Memoria<tipo> aux;
