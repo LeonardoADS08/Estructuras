@@ -17,10 +17,7 @@ public:
 
 	bool Extraer(Nodo<tipo>* p, Nodo<tipo>& val);
 
-	bool Fin_Lista()
-	{
-		return this->Primero();
-	}
+	Nodo<tipo>* Fin_Lista();
 
 	Nodo<tipo>* Proximo(Nodo<tipo>* q);
 
@@ -128,6 +125,12 @@ bool ListaCDin<tipo>::Extraer(Nodo<tipo>* p, Nodo<tipo>& val)
 		this->EliminarNodo(y);
 		return true;
 	}
+}
+
+template <class tipo>
+Nodo<tipo>* ListaCDin<tipo>::Fin_Lista()
+{
+	return this->Primero();
 }
 
 template <class tipo>
