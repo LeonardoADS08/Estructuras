@@ -16,55 +16,29 @@ public:
 
 	void Invertir();
 
-	void IngresoOrdenado(Nodo<tipo> elem)
-	{
-
-		Nodo<tipo>*p, *q;
-		if(this->Lista_Vacia())
-		{
-			this->Insertar(nullptr, elem);
-		}
-		else
-		{
-			p = this->Primero();
-			do
-			{
-				if(this->Lista(p)>elem.Elemento())
-				{
-					if(p==this->Primero())
-					{
-						this->Insertar(nullptr, elem); break;
-					}
-					else 
-					{
-						this->Insertar(this->Anterior(p), elem); break;
-					}
-				
-				}
-				else if(this->Proximo(p)==this->Primero())
-				{
-					this->Insertar(this->Ultimo(), elem); break;
-				}
-				
-				p = this->Proximo(p);
-			} while (p != this->Fin_Lista());
-		}
-	}
+	void IngresoOrdenado(Nodo<tipo> elem);
 
 	void Ordenar()//pendiente
 	{
-		Nodo<tipo> *q, aux;
 		Nodo<tipo> *p = this->Primero();
+		Nodo<tipo> *q;
 		do
 		{
+			q = this->Proximo(p);
 			do
 			{
 				
-			} while (p != this->Ultimo());
-		} while (p != this->Fin_Lista());
+				if(this->Lista(p)>this->Lista(q))
+				{
+					this->Swap(p, q);
+				}
+				q = this->Proximo(q);
+			} while (q != this->Fin_Lista());
+			p = this->Proximo(p);
+		} while (p != this->Ultimo());
 	}
 
-	void EliminarNrepetidos(int copias)//pendiente mi tener sueño
+	void EliminarNrepetidos(int copias)
 	;
 };
 
@@ -144,6 +118,44 @@ void Aplicacion<tipo>::Invertir()
 	{
 		this->Extraer(p, uno);
 		this->Insertar(nullptr, uno);
+	}
+}
+
+template <class tipo>
+void Aplicacion<tipo>::IngresoOrdenado(Nodo<tipo> elem)
+{
+	Nodo<tipo> *p, *q;
+	if (this->Lista_Vacia())
+	{
+		this->Insertar(nullptr, elem);
+	}
+	else
+	{
+		p = this->Primero();
+		do
+		{
+			if (this->Lista(p) > elem.Elemento())
+			{
+				if (p == this->Primero())
+				{
+					this->Insertar(nullptr, elem);
+					break;
+				}
+				else
+				{
+					this->Insertar(this->Anterior(p), elem);
+					break;
+				}
+			}
+			else if (this->Proximo(p) == this->Primero())
+			{
+				this->Insertar(this->Ultimo(), elem);
+				break;
+			}
+
+			p = this->Proximo(p);
+		}
+		while (p != this->Fin_Lista());
 	}
 }
 
