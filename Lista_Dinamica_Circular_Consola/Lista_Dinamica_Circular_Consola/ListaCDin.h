@@ -22,11 +22,15 @@ public:
 	Nodo<tipo>* Proximo(Nodo<tipo>* q);
 
 	Nodo<tipo>* Anterior(Nodo<tipo>* p);
+
 	Nodo<tipo>* Ultimo();
 
 	tipo Lista(Nodo<tipo>* p);
 
 	void Lista(Nodo<tipo>* p, tipo val);
+
+	void Swap(Nodo<tipo>* p, Nodo<tipo>* q);
+
 	~ListaCDin(){}
 };
 
@@ -142,7 +146,7 @@ Nodo<tipo>* ListaCDin<tipo>::Proximo(Nodo<tipo>* q)
 template <class tipo>
 Nodo<tipo>* ListaCDin<tipo>::Anterior(Nodo<tipo>* p)
 {
-	Nodo<tipo> *y = this->Primero(), q;
+	Nodo<tipo> *y = this->Primero(),*q;
 
 	do
 	{
@@ -169,5 +173,14 @@ template <class tipo>
 void ListaCDin<tipo>::Lista(Nodo<tipo>* p, tipo val)
 {
 	p->Elemento(val);
+}
+
+template <class tipo>
+void ListaCDin<tipo>::Swap(Nodo<tipo>* p, Nodo<tipo>* q)
+{
+	tipo uno = this->Lista(p);
+	tipo dos = this->Lista(q);
+	this->Lista(p, dos);
+	this->Lista(p, uno);
 }
 
