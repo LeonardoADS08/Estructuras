@@ -53,8 +53,8 @@ public:
 
 	void Ordenar()//pendiente
 	{
-		Nodo<tipo>*p, *q, aux;
-		p = this->Primero();
+		Nodo<tipo> *q, aux;
+		Nodo<tipo> *p = this->Primero();
 		do
 		{
 			do
@@ -63,16 +63,50 @@ public:
 			} while (p != this->Ultimo());
 		} while (p != this->Fin_Lista());
 	}
+
 	void EliminarNrepetidos(int copias)//pendiente mi tener sueño
+	;
+};
+
+template <class tipo>
+void Aplicacion<tipo>::EliminarNrepetidos(int copias)
+{
+	int cont = 0;
+	Nodo<tipo> aux;
+	Nodo<tipo> *p = this->Primero();
+	Nodo<tipo> *q = p;
+	do
 	{
-		Nodo<tipo>*p, *q, aux;
-		p = this->Primero();
 		do
 		{
-			
-		} while (p != this->Fin_Lista());
+			if (this->Lista(p) == this->Lista(q) && p != q)
+			{
+				if (cont < copias - 1)
+				{
+					cont++;
+					q = this->Proximo(q);
+				}
+
+				else
+				{
+					Nodo<tipo> *r = this->Anterior(q);
+					this->Extraer(r, aux);
+					q = this->Proximo(r);
+				}
+			}
+			else
+			{
+				q = this->Proximo(q);
+			}
+		}
+		while (q != this->Fin_Lista());
+
+		p = this->Proximo(p);
+		q = this->Primero();
+		cont = 0;
 	}
-};
+	while (p != this->Fin_Lista());
+}
 
 template <class tipo>
 void Aplicacion<tipo>::Memoria_ListaCrdin(Memoria<tipo> var)
@@ -105,7 +139,7 @@ Memoria<tipo> Aplicacion<tipo>::ListaCrdin_Memoria()
 template <class tipo>
 void Aplicacion<tipo>::Invertir()
 {
-	Nodo<tipo> *p = this->Primero(), *q = p, uno;
+	Nodo<tipo> *p = this->Primero(), uno;
 	while (p != this->Ultimo())
 	{
 		this->Extraer(p, uno);
