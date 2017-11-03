@@ -20,22 +20,23 @@ public:
 
 	void Ordenar()//pendiente
 	{
-		Nodo<tipo> *p = this->Primero();
-		Nodo<tipo> *q;
-		do
+		Nodo<tipo> *Q, *P, *F;
+		P = this->Primero();
+		while (P != this->Ultimo())
 		{
-			q = this->Proximo(p);
+			Q = P;
 			do
 			{
-				
-				if(this->Lista(p)>this->Lista(q))
+				if (this->Lista(Q)>this->Lista(P))
 				{
-					this->Swap(p, q);
+					this->Swap(Q, P);
+
+
 				}
-				q = this->Proximo(q);
-			} while (q != this->Fin_Lista());
-			p = this->Proximo(p);
-		} while (p != this->Ultimo());
+				Q = this->Proximo(Q);
+			} while (Q != this->Fin_Lista());
+			P = this->Proximo(P);
+		}
 	}
 
 	void EliminarNrepetidos(int copias)
