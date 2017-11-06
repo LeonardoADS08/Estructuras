@@ -161,6 +161,7 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::DarkSlateGray;
 			this->ClientSize = System::Drawing::Size(769, 261);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Tentrada);
@@ -172,6 +173,7 @@ namespace CppCLR_WinformsProjekt {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->TtamanoA);
 			this->Name = L"Form1";
+			this->Opacity = 0.95;
 			this->Text = L"Form1";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid2))->EndInit();
