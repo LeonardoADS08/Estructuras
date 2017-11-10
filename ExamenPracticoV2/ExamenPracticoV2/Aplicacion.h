@@ -7,10 +7,12 @@
 #include "Lista_Dinamica.h"
 #include "Pila.h"
 #include "Pila_Din.h"
+#include "Cola.h"
+#include "Cola_Din.h"
 using namespace std;
 template<class tipo>
 class Aplicacion:public Memoria<tipo>,public ListaCDin<tipo>,public Lista_Circular<tipo>,public Lista<tipo>,public Lista_Dinamica<tipo>,
-public Pila<tipo>,public Pila_Din<tipo>
+public Pila<tipo>,public Pila_Din<tipo>,public Cola<tipo>,public Cola_Din<tipo>
 {
 	/*Lista_Circular<Material> A;
 */
@@ -66,6 +68,51 @@ public:
 		{
 			this->Pila_Din::Insertar(x.Arreglo(i));
 		}
+	}
+	void Memoria_ColaEstatica(Memoria<tipo> x)
+	{
+		for(int i=0;i<x.Tamano();i++)
+		{
+			this->Cola::Insertar(x.Arreglo(i));
+		}
+	}
+	void Memoria_ColaDinamica(Memoria<tipo> x)
+	{
+		for(int i=0;i<x.Tamano();i++)
+		{
+			this->Cola_Din::Insertar(x.Arreglo(i));
+		}
+	}
+	Memoria<tipo> ColaDinamica_Memoria()
+	{
+		Memoria<tipo> fin;
+		int i = 0;
+		Nodo<tipo> aux;
+		while(!this->Cola_Din::Cola_Vacia())
+		{
+			this->Cola_Din::Eliminar(aux);
+			fin.Arreglo(aux, i);
+			i++;
+		}
+		fin.Tamano(i);
+		this->Memoria_ColaDinamica(fin);
+		return fin;
+	}
+	Memoria<tipo> ColaEstatica_Memoria()
+	{
+		int i = 0;
+		Memoria<tipo> fin;
+		Nodo<tipo> aux;
+		while(!this->Cola::ColaVacia())
+		{
+			this->Cola::Extraer(aux);
+			fin.Arreglo(aux, i);
+			i++;
+
+		}
+		fin.Tamano(i);
+		this->Memoria_ColaEstatica(fin);
+		return fin;
 	}
 	Memoria<tipo> PilaDinamica_Memoria()
 	{

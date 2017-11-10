@@ -57,6 +57,12 @@
     <ClInclude Include="Pila_Din.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Cola.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Cola_Din.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
