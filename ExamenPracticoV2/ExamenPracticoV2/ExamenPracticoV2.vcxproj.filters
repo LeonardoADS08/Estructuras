@@ -51,6 +51,12 @@
     <ClInclude Include="Lista_Dinamica.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Pila.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Pila_Din.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">

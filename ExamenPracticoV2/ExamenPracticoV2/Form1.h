@@ -54,6 +54,12 @@ namespace CppCLR_WinformsProjekt {
 	private: System::Windows::Forms::GroupBox^  groupBox4;
 	private: System::Windows::Forms::Button^  button7;
 	private: System::Windows::Forms::Button^  button8;
+	private: System::Windows::Forms::GroupBox^  groupBox5;
+	private: System::Windows::Forms::Button^  button9;
+	private: System::Windows::Forms::Button^  button10;
+	private: System::Windows::Forms::GroupBox^  groupBox6;
+	private: System::Windows::Forms::Button^  button11;
+	private: System::Windows::Forms::Button^  button12;
 
 	protected:
 
@@ -87,6 +93,12 @@ namespace CppCLR_WinformsProjekt {
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->button10 = (gcnew System::Windows::Forms::Button());
+			this->groupBox6 = (gcnew System::Windows::Forms::GroupBox());
+			this->button11 = (gcnew System::Windows::Forms::Button());
+			this->button12 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid3))->BeginInit();
@@ -94,6 +106,8 @@ namespace CppCLR_WinformsProjekt {
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
+			this->groupBox5->SuspendLayout();
+			this->groupBox6->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// TtamanoA
@@ -261,12 +275,76 @@ namespace CppCLR_WinformsProjekt {
 			this->button8->UseVisualStyleBackColor = true;
 			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
 			// 
+			// groupBox5
+			// 
+			this->groupBox5->Controls->Add(this->button9);
+			this->groupBox5->Controls->Add(this->button10);
+			this->groupBox5->Location = System::Drawing::Point(283, 261);
+			this->groupBox5->Name = L"groupBox5";
+			this->groupBox5->Size = System::Drawing::Size(95, 84);
+			this->groupBox5->TabIndex = 15;
+			this->groupBox5->TabStop = false;
+			this->groupBox5->Text = L"Pila Est";
+			// 
+			// button9
+			// 
+			this->button9->Location = System::Drawing::Point(6, 19);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(75, 23);
+			this->button9->TabIndex = 10;
+			this->button9->Text = L"Guardar";
+			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &Form1::button9_Click);
+			// 
+			// button10
+			// 
+			this->button10->Location = System::Drawing::Point(6, 48);
+			this->button10->Name = L"button10";
+			this->button10->Size = System::Drawing::Size(75, 23);
+			this->button10->TabIndex = 9;
+			this->button10->Text = L"Mostrar";
+			this->button10->UseVisualStyleBackColor = true;
+			this->button10->Click += gcnew System::EventHandler(this, &Form1::button10_Click);
+			// 
+			// groupBox6
+			// 
+			this->groupBox6->Controls->Add(this->button11);
+			this->groupBox6->Controls->Add(this->button12);
+			this->groupBox6->Location = System::Drawing::Point(413, 261);
+			this->groupBox6->Name = L"groupBox6";
+			this->groupBox6->Size = System::Drawing::Size(95, 84);
+			this->groupBox6->TabIndex = 16;
+			this->groupBox6->TabStop = false;
+			this->groupBox6->Text = L"Pila Dinamica";
+			// 
+			// button11
+			// 
+			this->button11->Location = System::Drawing::Point(6, 19);
+			this->button11->Name = L"button11";
+			this->button11->Size = System::Drawing::Size(75, 23);
+			this->button11->TabIndex = 10;
+			this->button11->Text = L"Guardar";
+			this->button11->UseVisualStyleBackColor = true;
+			this->button11->Click += gcnew System::EventHandler(this, &Form1::button11_Click);
+			// 
+			// button12
+			// 
+			this->button12->Location = System::Drawing::Point(6, 48);
+			this->button12->Name = L"button12";
+			this->button12->Size = System::Drawing::Size(75, 23);
+			this->button12->TabIndex = 9;
+			this->button12->Text = L"Mostrar";
+			this->button12->UseVisualStyleBackColor = true;
+			this->button12->Click += gcnew System::EventHandler(this, &Form1::button12_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSlateGray;
 			this->ClientSize = System::Drawing::Size(769, 380);
+			this->Controls->Add(this->groupBox6);
+			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
@@ -286,6 +364,8 @@ namespace CppCLR_WinformsProjekt {
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox4->ResumeLayout(false);
+			this->groupBox5->ResumeLayout(false);
+			this->groupBox6->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -355,6 +435,30 @@ private: System::Void button7_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) 
 		{
 	IO2.ThisM(APP.ListaLinearDinamic_Memoria());
+	IO2.Memoria_Grilla(Grid3);
+}
+private: System::Void button9_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO.Grid_Memoria(Grid1, Tentrada);
+	APP.Memoria_PilaEst(IO.ThisM());
+	IO2.ThisM(APP.PilaEstatica_Memoria());
+	IO2.Memoria_Grilla(Grid2);
+}
+private: System::Void button10_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO2.ThisM(APP.PilaEstatica_Memoria());
+	IO2.Memoria_Grilla(Grid3);
+}
+private: System::Void button11_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO.Grid_Memoria(Grid1, Tentrada);
+	APP.Memoria_PilaDinamic(IO.ThisM());
+	IO2.ThisM(APP.PilaDinamica_Memoria());
+	IO2.Memoria_Grilla(Grid2);
+}
+private: System::Void button12_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO2.ThisM(APP.PilaDinamica_Memoria());
 	IO2.Memoria_Grilla(Grid3);
 }
 };

@@ -157,6 +157,8 @@
     <ClInclude Include="Lista_Dinamica.h" />
     <ClInclude Include="Memoria.h" />
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Pila.h" />
+    <ClInclude Include="Pila_Din.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

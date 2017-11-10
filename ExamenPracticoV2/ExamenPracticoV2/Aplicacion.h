@@ -5,9 +5,12 @@
 #include "ListaCDin.h"
 #include "Lista.h"
 #include "Lista_Dinamica.h"
+#include "Pila.h"
+#include "Pila_Din.h"
 using namespace std;
 template<class tipo>
-class Aplicacion:public Memoria<tipo>,public ListaCDin<tipo>,public Lista_Circular<tipo>,public Lista<tipo>,public Lista_Dinamica<tipo>
+class Aplicacion:public Memoria<tipo>,public ListaCDin<tipo>,public Lista_Circular<tipo>,public Lista<tipo>,public Lista_Dinamica<tipo>,
+public Pila<tipo>,public Pila_Din<tipo>
 {
 	/*Lista_Circular<Material> A;
 */
@@ -49,6 +52,56 @@ public:
 		{
 			this->Lista_Dinamica::Insertar(nullptr, x.Arreglo(i));
 		}
+	}
+	void Memoria_PilaEst(Memoria<tipo>x)
+	{
+		for(int i=0;i<x.Tamano();i++)
+		{
+			this->Pila::Insertar(x.Arreglo(i));
+		}
+	}
+	void Memoria_PilaDinamic(Memoria<tipo>x)
+	{
+		for (int i = 0; i<x.Tamano(); i++)
+		{
+			this->Pila_Din::Insertar(x.Arreglo(i));
+		}
+	}
+	Memoria<tipo> PilaDinamica_Memoria()
+	{
+		int i = 0;
+		Nodo<tipo> aux;
+		Memoria<tipo> fin;
+		while (!this->Pila_Din::Pila_Vacia())
+		{
+			this->Pila_Din::Extraer(aux);
+			fin.Arreglo(aux, i);
+			i++;
+		}
+		fin.Tamano(i);
+		for (int i = 0; i<fin.Tamano(); i++)
+		{
+			this->Pila_Din::Insertar(fin.Arreglo(fin.Tamano() - 1 - i));
+		}
+		return fin;
+	}
+	Memoria<tipo> PilaEstatica_Memoria()
+	{
+		int i = 0;
+		Nodo<tipo> aux;
+		Memoria<tipo> fin;
+		while(!this->Pila::PilaVacia())
+		{
+			this->Pila::Eliminar(aux);
+			fin.Arreglo(aux, i);
+			i++;
+		}
+		fin.Tamano(i);
+		for (int i = 0; i<fin.Tamano(); i++)
+		{
+			this->Pila::Insertar(fin.Arreglo(fin.Tamano()-1-i));
+		}
+		return fin;
 	}
 	Memoria<tipo> ListaLinearDinamic_Memoria()
 	{
