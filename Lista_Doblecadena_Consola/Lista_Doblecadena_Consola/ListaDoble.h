@@ -17,7 +17,7 @@ public:
 	bool Insertar_Izquierda(Nodo<tipo> x, int p);
 	bool Extraer(Nodo<tipo>& x, int p);
 	int Proximo(int p);
-	int Primero() { return _list; }
+	int Primero();
 	int Anterior(int p);
 	tipo Lista(int p);
 	void Lista(tipo x, int p);
@@ -160,26 +160,27 @@ template<class tipo>bool ListaDoble<tipo>::Extraer(Nodo<tipo>&x,int p)
 	}
 }
 
-template <class tipo>
-int ListaDoble<tipo>::Proximo(int p)
+template <class tipo>int ListaDoble<tipo>::Proximo(int p)
 {
 	return _lista[p].Apuntador_Derecho();
 }
 
-template <class tipo>
-int ListaDoble<tipo>::Anterior(int p)
+template <class tipo>int ListaDoble<tipo>::Primero()
+{
+	return _list;
+}
+
+template <class tipo>int ListaDoble<tipo>::Anterior(int p)
 {
 	return _lista[p].Apuntador_Izquierdo();
 }
 
-template <class tipo>
-tipo ListaDoble<tipo>::Lista(int p)
+template <class tipo>tipo ListaDoble<tipo>::Lista(int p)
 {
 	return _lista[p].Elemento();
 }
 
-template <class tipo>
-void ListaDoble<tipo>::Lista(tipo x, int p)
+template <class tipo>void ListaDoble<tipo>::Lista(tipo x, int p)
 {
 	_lista[p].Elemento(x);
 }
