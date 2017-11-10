@@ -151,8 +151,10 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="INTERFAZ.h" />
+    <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaCDin.h" />
     <ClInclude Include="Lista_Circular.h" />
+    <ClInclude Include="Lista_Dinamica.h" />
     <ClInclude Include="Memoria.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="resource.h" />

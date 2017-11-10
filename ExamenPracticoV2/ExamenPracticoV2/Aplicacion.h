@@ -3,9 +3,11 @@
 #include "string"
 #include "Lista_Circular.h"
 #include "ListaCDin.h"
+#include "Lista.h"
+#include "Lista_Dinamica.h"
 using namespace std;
 template<class tipo>
-class Aplicacion:public Memoria<tipo>,public ListaCDin<tipo>,public Lista_Circular<tipo>
+class Aplicacion:public Memoria<tipo>,public ListaCDin<tipo>,public Lista_Circular<tipo>,public Lista<tipo>,public Lista_Dinamica<tipo>
 {
 	/*Lista_Circular<Material> A;
 */
@@ -32,6 +34,53 @@ public:
 			aux = x.Arreglo(i);
 			this->ListaCDin::Insertar(nullptr,aux);
 		}
+	}
+	void Memoria_ListaLinealEst(Memoria<tipo>x)
+	{
+		Nodo<tipo> aux;
+		for(int i=0;i<x.Tamano();i++)
+		{
+			this->Lista::Insertar(x.Arreglo(i), -1);
+		}
+	}
+	void Memoria_ListaLinealDin(Memoria<tipo>x)
+	{
+		for(int i=0;i<x.Tamano();i++)
+		{
+			this->Lista_Dinamica::Insertar(nullptr, x.Arreglo(i));
+		}
+	}
+	Memoria<tipo> ListaLinearDinamic_Memoria()
+	{
+		Nodo<tipo>*p = this->Lista_Dinamica::Primero();
+		Nodo<tipo>aux;
+		int i = 0;
+		Memoria<tipo> fin;
+		while(p!=nullptr)
+		{
+			aux.Elemento(this->Lista_Dinamica::Lista(p));
+			fin.Arreglo(aux, i);
+			i++;
+			p = this->Lista_Dinamica::Proximo(p);
+		}
+		fin.Tamano(i);
+		return fin;
+	}
+	Memoria<tipo> ListaLinearEstatica_Memoria()
+	{
+		Memoria<tipo> fin;
+		Nodo<tipo>aux;
+		int i = 0;
+		int p = this->Lista::Primero();
+		while(p!=-1)
+		{
+			aux.Elemento(this->Lista::TLista(p));
+			fin.Arreglo(aux, i);
+			i++;
+			p = this->Lista::Proximo(p);
+		}
+		fin.Tamano(i);
+		return fin;
 	}
 	Memoria<tipo> ListaCDin_Memoria()
 	{

@@ -46,6 +46,14 @@ namespace CppCLR_WinformsProjekt {
 	private: System::Windows::Forms::DataGridView^  Grid3;
 	private: System::Windows::Forms::TextBox^  Tentrada;
 	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  button5;
+	private: System::Windows::Forms::Button^  button6;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::GroupBox^  groupBox2;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::GroupBox^  groupBox4;
+	private: System::Windows::Forms::Button^  button7;
+	private: System::Windows::Forms::Button^  button8;
 
 	protected:
 
@@ -71,9 +79,21 @@ namespace CppCLR_WinformsProjekt {
 			this->Grid3 = (gcnew System::Windows::Forms::DataGridView());
 			this->Tentrada = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid3))->BeginInit();
+			this->groupBox1->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->groupBox3->SuspendLayout();
+			this->groupBox4->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// TtamanoA
@@ -88,31 +108,31 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(30, 107);
+			this->button2->Location = System::Drawing::Point(6, 19);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"button2";
+			this->button2->Text = L"Guardar";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(30, 201);
+			this->button3->Location = System::Drawing::Point(6, 48);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 2;
-			this->button3->Text = L"button3";
+			this->button3->Text = L"Mostrar";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &Form1::button3_Click);
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(30, 172);
+			this->button4->Location = System::Drawing::Point(6, 19);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 23);
 			this->button4->TabIndex = 3;
-			this->button4->Text = L"button4";
+			this->button4->Text = L"Guardar";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
 			// 
@@ -149,28 +169,112 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(30, 136);
+			this->button1->Location = System::Drawing::Point(6, 48);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 8;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"Mostrar";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(6, 19);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(75, 23);
+			this->button5->TabIndex = 10;
+			this->button5->Text = L"Guardar";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &Form1::button5_Click);
+			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(6, 48);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(75, 23);
+			this->button6->TabIndex = 9;
+			this->button6->Text = L"Mostrar";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &Form1::button6_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->button2);
+			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Location = System::Drawing::Point(30, 90);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(89, 79);
+			this->groupBox1->TabIndex = 11;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Lista Circ ";
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->button4);
+			this->groupBox2->Controls->Add(this->button3);
+			this->groupBox2->Location = System::Drawing::Point(30, 175);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(89, 80);
+			this->groupBox2->TabIndex = 12;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Lista Cric Dim";
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->button5);
+			this->groupBox3->Controls->Add(this->button6);
+			this->groupBox3->Location = System::Drawing::Point(30, 261);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(89, 84);
+			this->groupBox3->TabIndex = 13;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Lista Norm Est";
+			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->button7);
+			this->groupBox4->Controls->Add(this->button8);
+			this->groupBox4->Location = System::Drawing::Point(155, 261);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(95, 84);
+			this->groupBox4->TabIndex = 14;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"Lista Norm Din";
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(6, 19);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(75, 23);
+			this->button7->TabIndex = 10;
+			this->button7->Text = L"Guardar";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &Form1::button7_Click);
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(6, 48);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(75, 23);
+			this->button8->TabIndex = 9;
+			this->button8->Text = L"Mostrar";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &Form1::button8_Click);
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSlateGray;
-			this->ClientSize = System::Drawing::Size(769, 261);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(769, 380);
+			this->Controls->Add(this->groupBox4);
+			this->Controls->Add(this->groupBox3);
+			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->Tentrada);
 			this->Controls->Add(this->Grid3);
 			this->Controls->Add(this->Grid2);
 			this->Controls->Add(this->Grid1);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
 			this->Controls->Add(this->TtamanoA);
 			this->Name = L"Form1";
 			this->Opacity = 0.95;
@@ -178,6 +282,10 @@ namespace CppCLR_WinformsProjekt {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Grid3))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox4->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -223,6 +331,31 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	IO2.ThisM(APP.ListaCDin_Memoria());
 	IO2.Memoria_Grilla(Grid3);
 
+}
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+	IO.Grid_Memoria(Grid1, Tentrada);
+	APP.Memoria_ListaLinealEst(IO.ThisM());
+	IO2.ThisM(APP.ListaLinearEstatica_Memoria());
+	IO2.Memoria_Grilla(Grid2);
+}
+private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO2.ThisM(APP.ListaLinearEstatica_Memoria());
+	IO2.Memoria_Grilla(Grid3);
+
+}
+private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO.Grid_Memoria(Grid1, Tentrada);
+	APP.Memoria_ListaLinealDin(IO.ThisM());
+	IO2.ThisM(APP.ListaLinearDinamic_Memoria());
+	IO2.Memoria_Grilla(Grid2);
+}
+private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) 
+		{
+	IO2.ThisM(APP.ListaLinearDinamic_Memoria());
+	IO2.Memoria_Grilla(Grid3);
 }
 };
 }
